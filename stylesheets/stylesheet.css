@@ -447,7 +447,7 @@ a:hover {
 }
 
 h1.title {
-  margin: 30px 20px 10px;
+  margin: 0px 0px 0px;
   font-size: 40px;
   font-family:Arial, serif;
   text-align: center;
@@ -466,14 +466,14 @@ h1.title {
 
 p.tagline {
   color: #fff;
-  font-size: 25px;
+  font-size: 40px;
   text-align: center;
-  margin: 5px 5px 5px 5px;
+  margin: 5px 5px -20px 0px;
 }
 
 #main {
   margin-top: 20px;
-  padding: 0 20px 90px;
+  padding: 0 20px 50px;
   background-color: #fff;
 }
 
@@ -483,18 +483,39 @@ p.tagline {
   padding: 0px;
   margin: 0 0px 20px;
   position: relative;
-  display: flex
+  display: flex;
+  width:100%;
+  height:300px;
 }
 
 .addonlist .primary {
-  border-right: 5px solid #444;
   position: left;
+  overflow: auto;
+  width: 20%;
+  border-right: 5px solid #444;
 }
 
 .addonlist .secondary {
   flex: 1;
   background: #FFF;
+  overflow: auto;
+  width: 70%;
   position: left;
+}
+
+.searchBoxes {
+	margin-bottom: 10px;
+	width: 30%;
+	border-left: 2px solid #444;
+	border-top: 2px solid #444;
+	border-right: 2px solid #444;
+	border-bottom: 2px solid #444;
+	outline : none;
+}
+
+.fillerText {
+	margin-top:10px;
+	margin-bottom:10px;
 }
 
 .addon-bar {
@@ -646,7 +667,8 @@ a.addon-button {
   background: -webkit-linear-gradient(top,  #37ADD4,  #1B657E);  /* Safari <=6.1, Android <= 4.3 */
   background: linear-gradient(to bottom,  #37ADD4,  #1B657E);
   height: auto;
-  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 a.addon-button span {
@@ -660,15 +682,15 @@ a.addon-button span {
 }
 
 footer {
-  margin-bottom: 60px;
-  padding-bottom: 60px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 footer .owner {
   background: #222;
   border: 5px solid #444;
   padding: 5px 15px;
-  margin: -67px -10px 35px;
+  margin: -40px -10px 35px;
   color: #d6d6d6;
 }
 
@@ -716,7 +738,7 @@ footer .owner p a {
 .markdown-body dl,
 .markdown-body table,
 .markdown-body blockquote {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .markdown-body h1,
