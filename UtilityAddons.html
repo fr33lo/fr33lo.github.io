@@ -18,15 +18,11 @@
 
 </head>
 
-<body>
-
+<body onload="CreatetypeList()">
   <div class="wrapper">
-    <header>
-      <h1 class="title">EloBuddy Addon Database</h1>
-    </header>
     <div id="container">
       <p class="tagline">
-	  Utility Addons
+	  EloBuddy Addon Database
 	  </p>
       <div id="main" role="main">
         <div class="addon-bar">
@@ -35,9 +31,25 @@
 			  <a href="ChampionAddons.html" class="addon-button"><span>Champion Addons</span></a>
 			  <a href="UtilityAddons.html" class="addon-button"><span>Utility Addons</span></a>
 			</div>
-			<span class="blc"></span><span class="trc"></span>
         </div>
         <article class="markdown-body">
+			<div>
+					<!--<input id="championSearchTextbox" class="searchBoxes" type="text" autocomplete="off" name="championSearch" placeholder="Search by Champion.." oninput="CreatetypeList()"/>-->
+				</div>
+			<div class="addonlist">
+				<ol id="typeList" class="primary">
+				  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+				  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+				  <script>
+						$(
+						  function () {
+								$("#typeList").selectable();
+							}
+						);
+				  </script>
+				</ol>
+				<ol id="scriptList" class="secondary"></ol>
+			</div>
        </article>
       </div>
     </div>
@@ -47,10 +59,141 @@
       </div>
     </footer>
   </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/Sicryption/EloBuddyDatabase/tarball/master" class="tar">tar</a><a href="https://github.com/Sicryption/EloBuddyDatabase/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
 </body>
+
+<style>
+  #feedback { font-size: 1.4em; }
+  #typeList .ui-selecting { background: #FECA40; }
+  #typeList .ui-selected { background: #F39814; color: white; }
+  #typeList { list-style-type: none; margin: 0; padding: 0; width: 30% }
+  #typeList li { margin: 0px; padding: 5px 5px 10px 5px; font-size: 16px; height: 14px; }
+  #scriptList .ui-selecting { background: #FECA40; }
+  #scriptList .ui-selected { background: #F39814; color: white; }
+  #scriptList { list-style-type: none; margin: 0; padding: 0; width: 30% }
+  #scriptList li { margin: 3px; padding: 5px; font-size: 16px; height: 14px; }
+</style>
+ 
+<script>
+	var scriptDatabase = ["Evades##Moon Walk Evade|https://www.elobuddy.net/topic/34566-outdated-moon-walk-evade/|https://github.com/DanThePman/Moon-Walk-Evade##Evade Plus|https://www.elobuddy.net/topic/379-evadeplus/|https://github.com/stefsot/EloBuddyAddons",
+	"Cooldown Trackers##MasterMind|https://www.elobuddy.net/topic/14664-free-mastermind-improve-yourself/|https://github.com/Hellsing/MasterMind",
+	"Activators##KappaUtility|https://www.elobuddy.net/topic/22095-kappautility-season-7-ready-activator-utility-reworked/|https://github.com/plsfixrito/Worstaddons##UB Activator|https://www.elobuddy.net/topic/34684-619-ubactivator/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
+	"Auto-Smites##Smiterino|https://www.elobuddy.net/topic/41832-619-smiterino/|https://github.com/Downsecakr/EloBuddy",
+	"Humanizers",
+	"Bots##Auto Buddy|https://www.elobuddy.net/topic/18083-autobuddy-beta-new-github-link/|https://github.com/AutobuddyBeta/AutoBuddy##Aram Buddy|https://www.elobuddy.net/topic/36289-pre-beta-arambuddy-autoplay-aram-bot/|https://github.com/plsfixrito/AramBuddy",
+	"Shopping##Auto Shop|https://www.elobuddy.net/topic/43524-free-release-updated-for-622-autoshop/|https://github.com/hesa2020/HesaElobuddy",
+	"Base Ult##Base Ult++|https://www.elobuddy.net/topic/10278-baseult/|https://github.com/RoachxD/EloBuddy/",
+	"Exploits",
+	"Other##Unsigned Minigames|https://www.elobuddy.net/topic/43792-unsigned-minigames-snake-play-games-while-dead/|https://github.com/Sicryption/EloBuddyAddons"];
+		
+	//populating main list
+    function CreatetypeList()
+    {
+        var typeList = document.getElementById("typeList");
+        var scriptList = document.getElementById("scriptList");
+
+        var possibleScripts = new Array();
+
+        for (i = 0; i < scriptDatabase.length; i++)
+			possibleScripts.splice(possibleScripts.length, 0, scriptDatabase[i]);
+        
+        while (typeList.hasChildNodes())
+            typeList.removeChild(typeList.lastChild);
+
+        for(i = 0; i < possibleScripts.length; i++)
+        {
+            var newtypeListItem = document.createElement("li");	
+            var newtypeListItemNode = document.createTextNode(possibleScripts[i].split('##')[0]);
+            newtypeListItem.onclick = function () { LoadChampionScripts(this); };
+
+            newtypeListItem.appendChild(newtypeListItemNode);
+			
+            typeList.appendChild(newtypeListItem);
+        }
+    }	
+	//when clicking the champion
+    function LoadChampionScripts(evt)
+    {	
+        var scriptList = document.getElementById("scriptList");
+		
+		var typeIndex = -1;
+		for(i = 0; i < scriptDatabase.length; i++)
+			if(scriptDatabase[i].includes(evt.innerHTML))
+				typeIndex = i;
+		
+        while (scriptList.hasChildNodes())
+            scriptList.removeChild(scriptList.lastChild);
+			
+			//champs with no addons
+		if(scriptDatabase[typeIndex].split('##').length == 1)
+		{
+			scriptName = "None available for this champion";
+            var newListItem = document.createElement("li");
+            var newListItemNode = document.createTextNode(scriptName);
+            newListItem.appendChild(newListItemNode);
+            scriptList.appendChild(newListItem);
+		}
+			//champs with addons
+		for(i = 1; i < scriptDatabase[typeIndex].split('##').length; i++)
+		{	
+			var scriptName = scriptDatabase[typeIndex].split('##')[i].split('|')[0];
+            var newListItem = document.createElement("li");
+            var newListItemNode = document.createTextNode(scriptName);
+			
+            newListItem.appendChild(newListItemNode);
+			
+			var githubButton = document.createElement("button");
+			githubButton.innerHTML = "GitHub";
+			githubButton.onclick = function () { launchGitHub(this, typeIndex); };
+			var forumButton = document.createElement("button");
+			forumButton.innerHTML = "Forum";
+			forumButton.onclick = function () { launchForum(this, typeIndex); };
+			var installButton = document.createElement("button");
+			installButton.innerHTML = "Install";
+			installButton.onclick = function () { launchInstall(this, typeIndex); };
+						
+			newListItem.appendChild(githubButton);
+			newListItem.appendChild(forumButton);
+			newListItem.appendChild(installButton);
+			
+            scriptList.appendChild(newListItem);
+			
+		}
+    }
+	//when clicking the script
+    function LoadURL(element, typeIndex, linkIndex)
+    {
+		for(i = 1; i < scriptDatabase[typeIndex].split('##').length; i++)
+		{	
+			if(scriptDatabase[typeIndex].split('##')[i].includes(element.parentNode.innerHTML.split("<")[0]))
+			{
+				var scriptURL = "";
+				//github/forum link
+				if(linkIndex != 2)
+					scriptURL = scriptDatabase[typeIndex].split('##')[i].split('|')[linkIndex+1];
+				//install link
+				else
+				{
+					var githubLink = scriptDatabase[typeIndex].split('##')[i].split('|')[2];
+					if(githubLink[githubLink.length - 1] != '/')
+						githubLink = githubLink + "/";
+					var splitString = githubLink.split("/");
+					scriptURL = "elobuddy://" + splitString[splitString.length - 3] + "/" + splitString[splitString.length - 2];
+				}
+				window.open(scriptURL);
+			}
+		}
+	}
+	function launchGitHub(element, typeIndex)
+	{
+		LoadURL(element, typeIndex, 1);
+	}
+	function launchForum(element, typeIndex)
+	{
+		LoadURL(element, typeIndex, 0);
+	}
+	function launchInstall(element, typeIndex)
+	{
+		LoadURL(element, typeIndex, 2);
+	}
+</script>
 </html>

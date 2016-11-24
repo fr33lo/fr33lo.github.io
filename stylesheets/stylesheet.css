@@ -517,13 +517,10 @@ p.tagline {
       margin: -5px 5px 0px 0px;
 	  position:relative;
 	  right:-10px;
-	  background: #999; /* for non-css3 browsers */
-	  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#37ADD4', endColorstr='#1B657E'); /* IE <= 9 */
-	  background: -webkit-gradient(linear, left top, left bottom, from(#37ADD4), to(#1B657E)); /* ancient webkit browsers */
-	  background: -webkit-linear-gradient(top,  #37ADD4,  #1B657E);  /* Safari <=6.1, Android <= 4.3 */
-	  background: linear-gradient(to bottom,  #37ADD4,  #1B657E);
+	  background: #444444;
       border: 1px solid #444;
 	  border-bottom: none;
+	  color: #FFFFFF;
 }
 
 .searchBoxes {
@@ -679,19 +676,13 @@ a.code:hover {
 
 a.addon-button {
   border: 1px solid black;
-  border-radius: 3px;
   display: inline-block;
   text-indent: 0!important;
   width: auto;
   float: left;
-  background: #999; /* for non-css3 browsers */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#37ADD4', endColorstr='#1B657E'); /* IE <= 9 */
-  background: -webkit-gradient(linear, left top, left bottom, from(#37ADD4), to(#1B657E)); /* ancient webkit browsers */
-  background: -webkit-linear-gradient(top,  #37ADD4,  #1B657E);  /* Safari <=6.1, Android <= 4.3 */
-  background: linear-gradient(to bottom,  #37ADD4,  #1B657E);
+  background: #444444;
   height: auto;
   margin-right: 10px;
-  margin-bottom: 5px;
 }
 
 a.addon-button span {
