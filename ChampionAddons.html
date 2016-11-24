@@ -200,14 +200,14 @@
     "Warwick",
     "Wukong##Doctor's Wukong|https://www.elobuddy.net/topic/40172-doctors-wukong/|https://github.com/MBalack/Balles",
     "Xerath##Xerath - The Ascended|https://www.elobuddy.net/topic/6020-xerath-the-ascended/|https://github.com/Hellsing/EloBuddy-Addons/",
-    "Xin Zhao##Sur's Xin Zhao|https://www.elobuddy.net/topic/43106-622-surs-xin%E2%84%A2-jungleclear-added-smite-support/|https://github.com/WeinerCH/EB", 
+    "Xin Zhao##Sur's Xin Zhao|https://www.elobuddy.net/topic/43106-622-surs-xin%E2%84%A2-jungleclear-added-smite-support/|https://github.com/WeinerCH/EB/", 
 	"Yasuo##Unsigned Yasuo|https://www.elobuddy.net/topic/1823-updated-unsigned-yasuo-3000-yasuo/|https://github.com/Sicryption/EloBuddyAddons/",
     "Yorick##Lazy Yorick|https://www.elobuddy.net/topic/25995-621-thenewyasuo-englishportugu%C3%AAs/|https://github.com/DamnedN00b/EloBuddy",
     "Zac",
     "Zed##Korean AIO|https://www.elobuddy.net/topic/12295-korean-aio-mid-added-xerath-added-syndra/|https://github.com/jachicao/EloBuddy",
     "Ziggs##Wladis Ziggs|https://www.elobuddy.net/topic/43564-621-wladis-ziggs/|https://github.com/wladi0/Elobuddy", 
 	"Zilean##UB Zilean|https://www.elobuddy.net/topic/43564-621-wladis-ziggs/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
-    "Zyra##Sur's Zyra|https://www.elobuddy.net/topic/44043-622-surs-zyra%E2%84%A2-update-1/|https://github.com/WeinerCH/EB"];
+    "Zyra##Sur's Zyra|https://www.elobuddy.net/topic/44043-622-surs-zyra%E2%84%A2-update-1/|https://github.com/WeinerCH/EB/"];
 		
 	//populating main list
     function CreateChampionList()
@@ -292,13 +292,13 @@
 			var forumButton = document.createElement("button");
 			forumButton.innerHTML = "Forum";
 			forumButton.onclick = function () { launchForum(this, champIndex); };
-			//var installButton = document.createElement("button");
-			//installButton.innerHTML = "Install";
-			//installButton.onclick = function () { launchInstall(this); };
+			var installButton = document.createElement("button");
+			installButton.innerHTML = "Install";
+			installButton.onclick = function () { launchInstall(this, champIndex); };
 						
 			newListItem.appendChild(githubButton);
 			newListItem.appendChild(forumButton);
-			//newListItem.appendChild(installButton);
+			newListItem.appendChild(installButton);
 			
             scriptList.appendChild(newListItem);
 			
@@ -311,7 +311,19 @@
 		{	
 			if(championNames[champIndex].split('##')[i].includes(element.parentNode.innerHTML.split("<")[0]))
 			{
-				var scriptURL = championNames[champIndex].split('##')[i].split('|')[linkIndex+1];
+				var scriptURL = "";
+				//github/forum link
+				if(linkIndex != 2)
+					scriptURL = championNames[champIndex].split('##')[i].split('|')[linkIndex+1];
+				//install link
+				else
+				{
+					var githubLink = championNames[champIndex].split('##')[i].split('|')[2];
+					if(githubLink[githubLink.length - 1] != '/')
+						githubLink = githubLink + "/";
+					var splitString = githubLink.split("/");
+					scriptURL = "elobuddy://" + splitString[splitString.length - 3] + "/" + splitString[splitString.length - 2];
+				}
 				window.open(scriptURL);
 			}
 		}
