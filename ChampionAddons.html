@@ -94,7 +94,7 @@
 	"Aurelion Sol", 
 	"Azir", 
 	"Bard##UB Bard|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
-	"Blitzcrank##T7 Blitzcrank|https://github.com/Toyota7/EloBuddy",
+	"Blitzcrank##T7 Blitzcrank|https://github.com/Toyota7/EloBuddy##Myrzin's Blitzcrank|https://github.com/myrzin/EloBuddy",
 	"Brand##Sur's Brand|https://github.com/WeinerCH/EB",
 	"Braum", 
 	"Caitlyn##Marksman AIO|https://github.com/Daeral/Marksman-AIO/O4W AIO##https://github.com/mrarticuno/Elobuddy##Caitlyn the Troll|https://github.com/MeLoDagG/Elobuddy", 
@@ -241,7 +241,6 @@
             newChampionListItem.onclick = function () { LoadChampionScripts(this); };
 
             newChampionListItem.appendChild(newChampionListItemNode);
-			
 			if(newChampionListItem.innerHTML == "Cho'Gath")
 				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Chogath.png')";
 			else if(newChampionListItem.innerHTML == "Kha'Zix")
@@ -295,7 +294,11 @@
             var newListItemNode = document.createTextNode(scriptName);
 			newListItem.onclick = function () { LoadURL(this, champIndex); };
             newListItem.appendChild(newListItemNode);
+			
+			//var githubButton = document.createElement("button");
+			
             scriptList.appendChild(newListItem);
+			
 		}
     }
 	//when clicking the script
