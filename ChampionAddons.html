@@ -1,0 +1,200 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/github-dark.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>EloBuddy Addon Database</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body onload="CreateChampionList()">
+  <div class="wrapper">
+    <header>
+      <h1 class="title">EloBuddy Addon Database</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">
+	  Champion Addons
+	  </p>
+      <div id="main" role="main">
+        <div class="addon-bar">
+			<div class="inner">
+			  <a href="index.html" class="addon-button"><span>Home</span></a>
+			  <a href="ChampionAddons.html" class="addon-button"><span>Champion Addons</span></a>
+			  <a href="UtilityAddons.html" class="addon-button"><span>Utility Addons</span></a>
+			</div>
+			<br></br>
+			<div>
+				<input id="championSearchTextbox" type="text" name="championSearch" placeholder="Search by Champion.." oninput="CreateChampionList()"/>
+				<input id="scriptSearchTextbox" type="text" name="scriptSearch" placeholder="Search by Script.." oninput="CreateChampionList()"/>	
+			</div>
+			<span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+			<div class="addonlist">
+				<ol id="championList" class="primary">
+				  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+				  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+				  <script>
+						$(
+						  function () {
+								$("#championList").selectable();
+							}
+						);
+				  </script>
+				</ol>
+				<ol id="scriptList" class="secondary">
+				  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+				  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+				  <script>
+						$(
+						  function () {
+								$("#scriptList").selectable();
+							}
+						);
+				  </script>
+				  <li>hi</li>
+				  <li>hi</li>
+				  <li>hi</li>
+				</ol>
+			</div>
+       </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+		<p><a href="https://www.elobuddy.net/profile/1798-chaos/" class="avatar"><img src="https://avatars1.githubusercontent.com/u/10889516?v=3&amp;s=60" width="48" height="48"></a> <a href="https://www.elobuddy.net/profile/1798-chaos/">Chaos</a> developed this Addon Database.</p>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/Sicryption/EloBuddyDatabase/tarball/master" class="tar">tar</a><a href="https://github.com/Sicryption/EloBuddyDatabase/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+</body>
+
+<style>
+  #feedback { font-size: 1.4em; }
+  #championList .ui-selecting { background: #FECA40; }
+  #championList .ui-selected { background: #F39814; color: white; }
+  #championList { list-style-type: none; margin: 0; padding: 0; width: 30% }
+  #championList li { margin: 3px; padding: 5px; font-size: 16px; height: 14px; }
+  #scriptList .ui-selecting { background: #FECA40; }
+  #scriptList .ui-selected { background: #F39814; color: white; }
+  #scriptList { list-style-type: none; margin: 0; padding: 0; width: 30% }
+  #scriptList li { margin: 3px; padding: 5px; font-size: 16px; height: 14px; }
+</style>
+ 
+<script>
+	var championNames = ["Aatrox-Bloody God Aatrox|https://github.com/Taazuma/EB-T",
+	"Ahri-iAhri|https://github.com/jachicao/EloBuddy",
+	"Akali-Ronin Akali|https://github.com/Taazuma/EB-T", 
+	"Alistar",
+	"Amumu-God of Jungle|https://github.com/Taazuma/EB-T",
+	"Anivia-UB Anivia|https://github.com/Uzumaki-Boruto/EloBuddy-Addons", 
+	"Annie-Unsigned Annie|https://github.com/Sicryption/EloBuddyAddons/-Wu Annie|https://github.com/WujuSan/EloBuddy", 
+	"Ashe-Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
+	"Aurelion Sol", 
+	"Azir", 
+	"Bard-UB Bard|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
+	"Blitzcrank-T7 Blitzcrank|https://github.com/Toyota7/EloBuddy",
+	"Brand-Sur's Brand|https://github.com/WeinerCH/EB",
+	"Braum", 
+	"Caitlyn-Marksman AIO|https://github.com/Daeral/Marksman-AIO/-O4W AIO-https://github.com/mrarticuno/Elobuddy-Caitlyn the Troll|https://github.com/MeLoDagG/Elobuddy", 
+	"Camille-Unsigned Camille|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Cassiopeia-Wladis Cassiopeia|https://github.com/wladi0/Elobuddy",
+	"Cho'Gath-Draconic Cho'Gath|https://github.com/CounterFX/EloBuddy-Addons",
+	"Corki", "Darius", "Diana", "Dr. Mundo", "Draven", 
+	"Ekko", "Elise", "Evelynn", "Ezreal", "Fiddlesticks", "Fiora", "Fizz", "Galio", 
+	"Gangplank-Unsigned Gangplank|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Garen", "Gnar", "Gragas", "Graves", "Hecarim", "Heimerdinger", "Illaoi", "Irelia", "Ivern", 
+	"Janna", 
+	"Jarvan IV-Unsigned Jarvan IV|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Jax", "Jayce", "Jhin", "Jinx", "Kalista", "Karma", "Karthus", "Kassadin", 
+	"Katarina", "Kayle", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw", "LeBlanc", "Lee Sin", 
+	"Leona", "Lissandra", "Lucian", "Lulu", "Lux", "Malphite", "Malzahar", "Maokai", "Master Yi", 
+	"Miss Fortune", "Mordekaiser", "Morgana", "Nami", "Nasus", "Nautilus", "Nidalee", "Nocturne", 
+	"Nunu", "Olaf", "Orianna", "Pantheon", "Poppy", "Quinn", "Rammus", "Rek'Sai", 
+	"Renekton-Unsigned Renekton|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Rengar-Unsigned Rengar|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Riven", "Rumble", "Ryze", "Sejuani", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir", "Skarner", 
+	"Sona", "Soraka", "Swain", "Syndra", "Tahm Kench", "Taliyah", "Talon", "Taric", "Teemo", "Thresh", 
+	"Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch", "Udyr", "Urgot", "Varus", "Vayne", 
+	"Veigar", "Vel'Koz", 
+	"Vi-Unsigned Vi|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Viktor", "Vladimir", "Volibear", "Warwick", "Wukong", "Xerath", "Xin Zhao", 
+	"Yasuo-Unsigned Yasuo|https://github.com/Sicryption/EloBuddyAddons/", "Yorick", "Zac", "Zed", "Ziggs", 
+	"Zilean", "Zyra"];
+		
+	//populating main list
+    function CreateChampionList()
+    {
+        var element = document.getElementById("championSearchTextbox");
+        var championList = document.getElementById("championList");
+        var scriptList = document.getElementById("scriptList");
+
+        var possibleChampions = new Array();
+
+        for (i = 0; i < championNames.length; i++)
+            if (championNames[i].toLowerCase().includes(element.value.toLowerCase()))
+                possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+        
+        while (championList.hasChildNodes())
+            championList.removeChild(championList.lastChild);
+
+        for(i = 0; i < possibleChampions.length; i++)
+        {
+            var newChampionListItem = document.createElement("li");
+            var newChampionListItemNode = document.createTextNode(possibleChampions[i].split('-')[0]);
+            newChampionListItem.onclick = function () { LoadChampionScripts(this); };
+
+            newChampionListItem.appendChild(newChampionListItemNode);
+            championList.appendChild(newChampionListItem);
+        }
+    }
+	//when clicking the champion
+    function LoadChampionScripts(evt)
+    {
+        var scriptList = document.getElementById("scriptList");
+		
+		var champIndex = "";
+		for(i = 0; i < championNames.length; i++)
+			if(championNames[i].includes(evt.innerHTML))
+				champIndex = i;
+		
+        while (scriptList.hasChildNodes())
+            scriptList.removeChild(scriptList.lastChild);
+			
+		for(i = 1; i < championNames[champIndex].split('-').length; i++)
+		{
+			if(championNames[champIndex] == evt.innerHTML)
+				return;
+			
+            var newListItem = document.createElement("li");
+            var newListItemNode = document.createTextNode(championNames[champIndex].split('-')[i].split('|')[0]);
+            newListItem.onclick = function () { LoadURL(champIndex, i); };
+
+            newListItem.appendChild(newListItemNode);
+            scriptList.appendChild(newListItem);
+		}
+    }
+	//when clicking the script
+    function LoadURL(champIndex, scriptIndex)
+    {
+		var scriptURL = championNames[champIndex].split('-')[scriptIndex - 1].split('|')[1];
+		window.open(scriptURL);
+	}
+</script>
+</html>
