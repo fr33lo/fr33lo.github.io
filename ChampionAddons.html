@@ -48,16 +48,7 @@
 						);
 				  </script>
 				</ol>
-				<ol id="scriptList" class="secondary">
-				  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-				  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-				  <script>
-						$(
-						  function () {
-								$("#scriptList").selectable();
-							}
-						);
-				  </script></ol>
+				<ol id="scriptList" class="secondary"></ol>
 			</div>
        </article>
       </div>
@@ -83,140 +74,140 @@
 </style>
  
 <script>
-	var championNames = ["Aatrox##Bloody God Aatrox|https://github.com/Taazuma/EB-T",
-	"Ahri##iAhri|https://github.com/jachicao/EloBuddy",
-	"Akali##Ronin Akali|https://github.com/Taazuma/EB-T", 
+	var championNames = ["Aatrox##Bloody God Aatrox|https://www.elobuddy.net/topic/33296-621-bloodygod-aatrox-aatrox-addon-combo-clears-logics-incoming-gapcloser-e-q%C2%A0interrupt/|https://github.com/Taazuma/EB-T",
+	"Ahri##iAhri|https://www.elobuddy.net/topic/381-iahri/|https://github.com/jachicao/EloBuddy",
+	"Akali##Ronin Akali|https://www.elobuddy.net/topic/29435-622-ronin-akali-akali-addon-combos-clears-w-usage-ks/|https://github.com/Taazuma/EB-T", 
 	"Alistar",
-	"Amumu##God of Jungle|https://github.com/Taazuma/EB-T",
-	"Anivia##UB Anivia|https://github.com/Uzumaki-Boruto/EloBuddy-Addons", 
-	"Annie##Unsigned Annie|https://github.com/Sicryption/EloBuddyAddons/##Wu Annie|https://github.com/WujuSan/EloBuddy", 
-	"Ashe##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
+	"Amumu##God of Jungle|https://www.elobuddy.net/topic/33159-620-god-of-jungel-amumu-amumu-addon-combos-clears-logics-q-ks-smart-w-gank-combo/|https://github.com/Taazuma/EB-T",
+	"Anivia##UB Anivia|https://www.elobuddy.net/topic/41734-619-ubanivia/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons", 
+	"Annie##Unsigned Annie|https://www.elobuddy.net/topic/2013-unsigned-annie-1000/|https://github.com/Sicryption/EloBuddyAddons/##Wu Annie|https://www.elobuddy.net/topic/3004-62-wuannie-wtf-was-that-ultimate-bestrlogicqlasthit/|https://github.com/WujuSan/EloBuddy", 
+	"Ashe##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
 	"Aurelion Sol", 
 	"Azir", 
-	"Bard##UB Bard|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
-	"Blitzcrank##T7 Blitzcrank|https://github.com/Toyota7/EloBuddy##Myrzin's Blitzcrank|https://github.com/myrzin/EloBuddy",
-	"Brand##Sur's Brand|https://github.com/WeinerCH/EB",
+	"Bard##UB Bard|https://www.elobuddy.net/topic/42282-620-ubbard/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
+	"Blitzcrank##T7 Blitzcrank|https://www.elobuddy.net/topic/39773-t7-blitz-%E2%84%A2/|https://github.com/Toyota7/EloBuddy##Myrzin's Blitzcrank|https://www.elobuddy.net/topic/43477-622-myrzins-blitzcrank/|https://github.com/myrzin/EloBuddy",
+	"Brand##Sur's Brand|https://www.elobuddy.net/topic/44194-622-surs-brand%E2%84%A2-el-regreso-release/|https://github.com/WeinerCH/EB",
 	"Braum", 
-	"Caitlyn##Marksman AIO|https://github.com/Daeral/Marksman-AIO/O4W AIO##https://github.com/mrarticuno/Elobuddy##Caitlyn the Troll|https://github.com/MeLoDagG/Elobuddy", 
-	"Camille##Unsigned Camille|https://github.com/Sicryption/EloBuddyAddons/", 
-	"Cassiopeia##Wladis Cassiopeia|https://github.com/wladi0/Elobuddy",
+	"Caitlyn##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/##O4W AIO|https://www.elobuddy.net/topic/6545-o4w-ad-carry-151jinx-beta-release/|https://github.com/mrarticuno/Elobuddy##Caitlyn the Troll|https://www.elobuddy.net/topic/30200-621caitlyn-the-troll-version-16-27-10-2016-add-eq-keybind-smart-ulty-full-customizable-full-passive-dmg/|https://github.com/MeLoDagG/Elobuddy", 
+	"Camille##Unsigned Camille||https://github.com/Sicryption/EloBuddyAddons/", 
+	"Cassiopeia##Wladis Cassiopeia|https://www.elobuddy.net/topic/43483-622-wladis-cassiopeia/|https://github.com/wladi0/Elobuddy",
 	"Cho'Gath",
-	"Corki##Marksman AIO|https://github.com/Daeral/Marksman-AIO/", 
-	"Darius##KappaDarius|https://github.com/plsfixrito/Worstaddons", 
+	"Corki##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/", 
+	"Darius##KappaDarius|https://www.elobuddy.net/topic/19805-618-kappadarius-the-dank-memes-master-op-combo-1-shot/|https://github.com/plsfixrito/Worstaddons", 
 	"Diana", 
-	"Dr. Mundo##Vodka Dr. Mundo|https://github.com/tswierkot/EloBuddy", 
-	"Draven##Marksman AIO|https://github.com/Daeral/Marksman-AIO/", 
+	"Dr. Mundo##Vodka Dr. Mundo|https://www.elobuddy.net/topic/29526-69-vodka-dr-mundo/|https://github.com/tswierkot/EloBuddy", 
+	"Draven##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/", 
 	"Ekko", 
-	"Elise##Elise the Troll|https://github.com/MeLoDagG/Elobuddy", 
-	"Evelynn##Sur's Evelynn|https://github.com/WeinerCH/EB",
-	"Ezreal##Marksman AIO|https://github.com/Daeral/Marksman-AIO/", 
+	"Elise##Elise the Troll|https://www.elobuddy.net/topic/39937-621elisethe-troll-592016version-1/|https://github.com/MeLoDagG/Elobuddy", 
+	"Evelynn##Sur's Evelynn|https://www.elobuddy.net/topic/43489-622-surs-series-evelynn-update-1/|https://github.com/WeinerCH/EB",
+	"Ezreal##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/", 
 	"Fiddlesticks",
 	"Fiora",
 	"Fizz", 
 	"Galio", 
-	"Gangplank##Unsigned Gangplank|https://github.com/Sicryption/EloBuddyAddons/##KappAIO|https://github.com/plsfixrito/KappAIO", 
+	"Gangplank##Unsigned Gangplank|https://www.elobuddy.net/topic/42596-620-unsigned-gangplank/|https://github.com/Sicryption/EloBuddyAddons/##KappAIO|https://www.elobuddy.net/topic/38467-kappaio-new-sion-orianna/|https://github.com/plsfixrito/KappAIO", 
 	"Garen", 
-	"Gnar##UB Gnar|https://github.com/Uzumaki-Boruto/EloBuddy-Addons", 
-	"Gragas##Wladis Gragas|https://github.com/wladi0/Elobuddy", 
-	"Graves##Marksman AIO|https://github.com/Daeral/Marksman-AIO/##Doctor's Graves|https://github.com/MBalack/Balles",
+	"Gnar##UB Gnar|https://www.elobuddy.net/topic/42285-620-ubgnar-link-to-your-victory/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons", 
+	"Gragas##Wladis Gragas|https://www.elobuddy.net/topic/42739-621-wladis-gragas/|https://github.com/wladi0/Elobuddy", 
+	"Graves##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/##Doctor's Graves|https://www.elobuddy.net/topic/30649-doctors-graves-use-e-reload-aa-r-killsteal-count-enemies-semi-manual-notification-r-killable/|https://github.com/MBalack/Balles",
 	"Hecarim", 
 	"Heimerdinger",
-	"Illaoi##Lazy Illaoi|https://github.com/DamnedN00b/EloBuddy", 
-	"Irelia##Irelia the Troll|https://github.com/MeLoDagG/Elobuddy##Wu Irelia|https://github.com/WujuSan/EloBuddy", 
-	"Ivern##Lazy Ivern|https://github.com/DamnedN00b/EloBuddy", 
+	"Illaoi##Lazy Illaoi|https://www.elobuddy.net/topic/41579-lazy-illaoi-20-illaoi/|https://github.com/DamnedN00b/EloBuddy", 
+	"Irelia##Irelia the Troll|https://www.elobuddy.net/topic/23820-620irelia-the-troll-rework-version-1-2862016-many-logic-fast-combo/|https://github.com/MeLoDagG/Elobuddy##Wu Irelia|https://www.elobuddy.net/topic/10223-62-wuirelia-rq-q-gapcloser-tons-of-logicmechanicssheentrinity-logic/|https://github.com/WujuSan/EloBuddy", 
+	"Ivern##Lazy Ivern|https://www.elobuddy.net/topic/42345-lazy-ivern-ivern/|https://github.com/DamnedN00b/EloBuddy", 
 	"Janna", 
-	"Jarvan IV##Unsigned Jarvan IV|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Jarvan IV##Unsigned Jarvan IV|https://www.elobuddy.net/topic/43898-updated-unsigned-jarvaniv-1000/|https://github.com/Sicryption/EloBuddyAddons/", 
 	"Jax",
-	"Jayce##LookSharp Jayce|https://github.com/benburk/Looksharp",
-	"Jhin##Marksman AIO|https://github.com/Daeral/Marksman-AIO/##KappAIO|https://github.com/plsfixrito/KappAIO##Jhin la mente del chorizo|https://github.com/jachicao/EloBuddy", 
-	"Jinx##Marksman AIO|https://github.com/Daeral/Marksman-AIO/", 
-	"Kalista##Marksman AIO|https://github.com/Daeral/Marksman-AIO/##KappAIO|https://github.com/plsfixrito/KappAIO##Bound for Eternity|https://github.com/Hellsing/EloBuddy-Addons/##Nebula Kalista|https://github.com/GoldFiish/Elobuddy",
+	"Jayce##LookSharp Jayce|https://www.elobuddy.net/topic/23203-621-looksharp-jayce-updated-nov-1/|https://github.com/benburk/Looksharp",
+	"Jhin##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/##KappAIO|https://www.elobuddy.net/topic/38467-kappaio-new-sion-orianna/|https://github.com/plsfixrito/KappAIO##Jhin la mente del chorizo|https://www.elobuddy.net/topic/14111-jhin-la-mente-del-virtuoso/|https://github.com/jachicao/EloBuddy", 
+	"Jinx##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/", 
+	"Kalista##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/##KappAIO|https://www.elobuddy.net/topic/38467-kappaio-new-sion-orianna/|https://github.com/plsfixrito/KappAIO##Bound for Eternity|https://www.elobuddy.net/topic/28-kalista-bound-for-eternity/|https://github.com/Hellsing/EloBuddy-Addons/##Nebula Kalista|https://www.elobuddy.net/topic/34602-622-nebula-kalista/|https://github.com/GoldFiish/Elobuddy",
 	"Karma", 
-	"Karthus##King Killsteal|https://github.com/Hellsing/EloBuddy-Addons",
-	"Kassadin##HTTF Kassadin|https://github.com/HTTFRU/EloBuddy", 
-	"Katarina##Wladis Kata|https://github.com/wladi0/Elobuddy##P1 Katarina|https://github.com/poru141/Elobuddy",
-	"Kayle##God Kayle|https://github.com/Taazuma/EB-T", 
-	"Kennen##UB Kennen|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
-	"Kha'Zix##Khappa'Zix|https://github.com/plsfixrito/Worstaddons", 
+	"Karthus##King Killsteal|https://www.elobuddy.net/topic/42180-karthus-king-killsteal/|https://github.com/Hellsing/EloBuddy-Addons",
+	"Kassadin##HTTF Kassadin|https://www.elobuddy.net/topic/41805-622httf-kassadin/|https://github.com/HTTFRU/EloBuddy", 
+	"Katarina##Wladis Kata|https://www.elobuddy.net/topic/41742-622-wladis-kata-katarina-reworked/|https://github.com/wladi0/Elobuddy##P1 Katarina|https://www.elobuddy.net/topic/42027-622-p1-katarina-reworked|https://github.com/poru141/Elobuddy",
+	"Kayle##God Kayle|https://www.elobuddy.net/topic/43407-621-god-kayle/|https://github.com/Taazuma/EB-T", 
+	"Kennen##UB Kennen|https://www.elobuddy.net/topic/22172-619-ubkennen/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
+	"Kha'Zix##Khappa'Zix|https://www.elobuddy.net/topic/25556-khappazix-sbtw-assassin-rework-ready/|https://github.com/plsfixrito/Worstaddons", 
 	"Kindred", 
 	"Kled", 
-	"Kog'Maw##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
-	"LeBlanc##Ravenborn Leblanc|https://github.com/DownsecAkr/EloBuddy##KarmaPanda Leblanc|https://github.com/KarmaPanda/EloBuddy",
-	"Lee Sin##Moony Lee Sin|https://www.elobuddy.net/topic/32004-moony-lee-sin/##Master the Enemy|https://github.com/jachicao/EloBuddy", 
-	"Leona##Protector Leona|https://github.com/CounterFX/EloBuddy-Addons", 
+	"Kog'Maw##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
+	"LeBlanc##Ravenborn Leblanc|https://www.elobuddy.net/topic/43836-622-ravenborn-leblanc-updated-to-6221/|https://github.com/DownsecAkr/EloBuddy##KarmaPanda Leblanc|https://www.elobuddy.net/topic/13643-622-lelblanc-beta-requires-build-tools-140/|https://github.com/KarmaPanda/EloBuddy",
+	"Lee Sin##Moony Lee Sin|https://www.elobuddy.net/topic/32004-moony-lee-sin/|https://www.elobuddy.net/topic/32004-moony-lee-sin/##Master the Enemy|https://www.elobuddy.net/topic/4972-leesin-master-the-enemy-fixed-622/|https://github.com/jachicao/EloBuddy", 
+	"Leona##Protector Leona|https://www.elobuddy.net/topic/12655-counters-protectorleona/|https://github.com/CounterFX/EloBuddy-Addons", 
 	"Lissandra", 
-	"Lucian##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
+	"Lucian##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
 	"Lulu", 
-	"Lux##Ronin Lux|https://github.com/Taazuma/EB-T/##Sur's Lux|https://github.com/WeinerCH/EB",
-    "Malphite##WuMalphite|https://github.com/WujuSan/EloBuddy",
+	"Lux##Ronin Lux|https://www.elobuddy.net/topic/29139-622-ronin-lux-luxy-addon-combo-clears-spells-logic-humanizer-advanced-settings-more/|https://github.com/Taazuma/EB-T/##Sur's Lux|https://www.elobuddy.net/topic/43890-622-surs-series-lux-beta|https://github.com/WeinerCH/EB",
+    "Malphite##WuMalphite|https://www.elobuddy.net/topic/2331-62-wumalphite-wtf-was-that-ultimate-bestrlogicvideo/|https://github.com/WujuSan/EloBuddy",
     "Malzahar",
     "Maokai",
-    "Master Yi##Master Yi the Troll|https://elobuddydb.com/addons/Master%20Yi", 
-	"Miss Fortune##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
+    "Master Yi##Master Yi the Troll|https://www.elobuddy.net/topic/33197-622yi-the-troll-version-1-2762016-evade-qw-aareset-w-smite-useage/|https://elobuddydb.com/addons/Master%20Yi", 
+	"Miss Fortune##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
     "Mordekaiser",
-    "Morgana##WuMorgana|https://github.com/WujuSan/EloBuddy",
-    "Nami##Moony Nami|https://www.elobuddy.net/topic/22321-620-moony-nami/",
-    "Nasus##Ronin Nasus|https://github.com/Taazuma/EB-T",
+    "Morgana##WuMorgana|https://www.elobuddy.net/topic/9719-62-wumorgana-bestqseverconfigurable-e-usagegood-w-logic/|https://github.com/WujuSan/EloBuddy",
+    "Nami##Moony Nami|https://www.elobuddy.net/topic/22321-620-moony-nami/|https://www.elobuddy.net/topic/22321-620-moony-nami/",
+    "Nasus##Ronin Nasus|https://www.elobuddy.net/topic/29567-621-ronin-nasus-nasus-addon-combos-clears-q-lasthit-r-at-xhp/|https://github.com/Taazuma/EB-T",
     "Nautilus",
-    "Nidalee##UB Nidalee|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
-    "Nocturne##Ronin Nocturne|https://github.com/Taazuma/EB-T", 
-	"Nunu##Rider Nunu|https://github.com/CounterFX/EloBuddy-Addons",
+    "Nidalee##UB Nidalee|https://www.elobuddy.net/topic/25930-621-ubnidalee-update-1010-auto-jump-system-cooldown-tracker-more-video/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
+    "Nocturne##Ronin Nocturne|https://www.elobuddy.net/topic/25806-621-ronin-tune-nocturne-addon-combo-clears-w-blockspell-more/|https://github.com/Taazuma/EB-T", 
+	"Nunu##Rider Nunu|https://www.elobuddy.net/topic/25806-621-ronin-tune-nocturne-addon-combo-clears-w-blockspell-more/|https://github.com/CounterFX/EloBuddy-Addons",
     "Olaf",
-    "Orianna##KappAIO|https://github.com/plsfixrito/KappAIO",
+    "Orianna##KappAIO|https://www.elobuddy.net/topic/38467-kappaio-new-sion-orianna/|https://github.com/plsfixrito/KappAIO",
     "Pantheon",
     "Poppy",
-    "Quinn##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
+    "Quinn##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
     "Rammus",
     "Rek'Sai", 
-	"Renekton##Unsigned Renekton|https://github.com/Sicryption/EloBuddyAddons/", 
-	"Rengar##Unsigned Rengar|https://github.com/Sicryption/EloBuddyAddons/##NightHunter Rengar|https://github.com/DownsecAkr/EloBuddy", 
-	"Riven##HTTF Riven|https://github.com/HTTFRU/EloBuddy##Moony Riven|https://www.elobuddy.net/topic/32625-622-300-walljumps-moony-riven/",
-    "Rumble##Rumble in the Jungle|https://github.com/Taazuma/EB-T",
-    "Ryze##Sur's Ryze|https://github.com/WeinerCH/EB##Perfect Combo Ryze|https://github.com/mar173/Ryze",
+	"Renekton##Unsigned Renekton|https://www.elobuddy.net/topic/12914-unsigned-renekton/|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Rengar##Unsigned Rengar|https://www.elobuddy.net/topic/43885-updated-unsigned-rengar-1000-best-logic/|https://github.com/Sicryption/EloBuddyAddons/##NightHunter Rengar|https://www.elobuddy.net/topic/43864-622-nighthunter-rengar/|https://github.com/DownsecAkr/EloBuddy", 
+	"Riven##HTTF Riven|https://www.elobuddy.net/topic/33914-622httf-riven-fast-qaa-add-wall-jump/|https://github.com/HTTFRU/EloBuddy##Moony Riven|https://www.elobuddy.net/topic/32625-622-300-walljumps-moony-riven/|https://www.elobuddy.net/topic/32625-622-300-walljumps-moony-riven/",
+    "Rumble##Rumble in the Jungle|https://www.elobuddy.net/topic/42206-620-rumble-in-the-jungle/|https://github.com/Taazuma/EB-T",
+    "Ryze##Sur's Ryze|https://www.elobuddy.net/topic/43644-622-surs-series-ryze-r-onsafeposition/|https://github.com/WeinerCH/EB##Perfect Combo Ryze|https://www.elobuddy.net/topic/43600-621-perfect-combo-ryze-1001/|https://github.com/mar173/Ryze",
     "Sejuani",
-    "Shaco##Joker Shaco|https://github.com/Taazuma/EB-T",
-    "Shen##HTTF Shen|https://github.com/HTTFRU/EloBuddy",
-    "Shyvana##ShyvanaZero|https://github.com/her0gamer3/EloBuddy",
-    "Singed##Alchemist Singed|https://github.com/CounterFX/EloBuddy-Addons	",
-    "Sion##KappAIO|https://github.com/plsfixrito/KappAIO",
-    "Sivir##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
-    "Skarner##Ronin Skarner|https://github.com/Taazuma/EB-T", 
+    "Shaco##Joker Shaco|https://www.elobuddy.net/topic/33834-620-the-joker-shaco-shaco-addon-logic-combo-clears-w-logic-spells-dodge-clone-control-e-ks-smiteignite/|https://github.com/Taazuma/EB-T",
+    "Shen##HTTF Shen|https://www.elobuddy.net/topic/44326-622httf-shen-e-logicr-logic/|https://github.com/HTTFRU/EloBuddy",
+    "Shyvana##ShyvanaZero|https://www.elobuddy.net/topic/44401-623-shyvanazero/|https://github.com/her0gamer3/EloBuddy",
+    "Singed##Alchemist Singed|https://www.elobuddy.net/topic/13407-counters-alchemistsinged/|https://github.com/CounterFX/EloBuddy-Addons	",
+    "Sion##KappAIO|https://www.elobuddy.net/topic/38467-kappaio-new-sion-orianna/|https://github.com/plsfixrito/KappAIO",
+    "Sivir##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
+    "Skarner##Ronin Skarner|https://www.elobuddy.net/topic/26958-621-ronin-skarner-skarner-addon-combos-clears-qe-lasthit-more/|https://github.com/Taazuma/EB-T", 
 	"Sona",
-    "Soraka##Wladis Soraka|https://github.com/wladi0/Elobuddy",
-    "Swain##Swain the Troll|https://github.com/MeLoDagG/Elobuddy",
-    "Syndra##KappAIO|https://github.com/plsfixrito/KappAIO##Dark Syndra|https://github.com/wladi0/Elobuddy",
+    "Soraka##Wladis Soraka|https://www.elobuddy.net/topic/26958-621-ronin-skarner-skarner-addon-combos-clears-qe-lasthit-more/|https://github.com/wladi0/Elobuddy",
+    "Swain##Swain the Troll|https://www.elobuddy.net/topic/36600-620swain-the-troll-182016version-1-video/|https://github.com/MeLoDagG/Elobuddy",
+    "Syndra##KappAIO|https://www.elobuddy.net/topic/38467-kappaio-new-sion-orianna/|https://github.com/plsfixrito/KappAIO##Dark Syndra|https://www.elobuddy.net/topic/39991-622-dark-syndra/|https://github.com/wladi0/Elobuddy",
     "Tahm Kench",
-    "Taliyah##Taliyah the Troll|https://github.com/MeLoDagG/Elobuddy",
-    "Talon##Dragonblade Talon|https://github.com/DownsecAkr/EloBuddy",
-    "Taric##Defender Taric|https://github.com/CounterFX/EloBuddy-Addons",
-    "Teemo##Panda Teemo|https://github.com/KarmaPanda/EloBuddy",
-    "Thresh##Madlife Thresh|https://github.com/jachicao/EloBuddy", 
-	"Tristana##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
-    "Trundle##Doctor's Trundle|https://github.com/MBalack/Balles",
-    "Tryndamere##Doctor's Tryndamere|https://github.com/MBalack/Balles##TryndaZero|https://github.com/her0gamer3/EloBuddy",
-    "Twisted Fate##Twisted Buddy|https://github.com/KarmaPanda/EloBuddy",
-    "Twitch##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
+    "Taliyah##Taliyah the Troll|https://www.elobuddy.net/topic/30601-610taliyah-the-troll-2352016version-1/|https://github.com/MeLoDagG/Elobuddy",
+    "Talon##Dragonblade Talon|https://www.elobuddy.net/topic/43843-622-dragonblade-talon/|https://github.com/DownsecAkr/EloBuddy",
+    "Taric##Defender Taric|https://www.elobuddy.net/topic/9877-counters-defendertaric/|https://github.com/CounterFX/EloBuddy-Addons",
+    "Teemo##Panda Teemo|https://www.elobuddy.net/topic/1099-pandateemo/|https://github.com/KarmaPanda/EloBuddy",
+    "Thresh##Madlife Thresh|https://www.elobuddy.net/topic/7416-imadlife-thresh/|https://github.com/jachicao/EloBuddy", 
+	"Tristana##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
+    "Trundle##Doctor's Trundle|https://www.elobuddy.net/topic/32704-doctors-trundle-q-reset-aa-use-items-ultimate-low-hp-whitelist-antigap-interrupt/|https://github.com/MBalack/Balles",
+    "Tryndamere##Doctor's Tryndamere|https://www.elobuddy.net/topic/41643-doctors-tryndamere-have-fun/|https://github.com/MBalack/Balles##TryndaZero|https://www.elobuddy.net/topic/38990-623-tryndazero/|https://github.com/her0gamer3/EloBuddy",
+    "Twisted Fate##Twisted Buddy|https://www.elobuddy.net/topic/1550-616-twistedbuddy/|https://github.com/KarmaPanda/EloBuddy",
+    "Twitch##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
     "Udyr",
-    "Urgot##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
-    "Varus##Marksman AIO|https://github.com/Daeral/Marksman-AIO/",
-    "Vayne##Marksman AIO|https://github.com/Daeral/Marksman-AIO/", 
-	"Veigar##T7 Veigar|https://github.com/Toyota7/EloBuddy",
-    "Vel'Koz##Seeker Vel'Koz|https://github.com/CounterFX/EloBuddy-Addons", 
-	"Vi##Unsigned Vi|https://github.com/Sicryption/EloBuddyAddons/", 
-	"Viktor##KappAIO|https://github.com/plsfixrito/KappAIO",
-    "Vladimir##Vladimir the Troll|https://github.com/MeLoDagG/Elobuddy",
-    "Volibear##Polarbear Volibear|https://github.com/scarEl/EloBuddy",
+    "Urgot##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
+    "Varus##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/",
+    "Vayne##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/", 
+	"Veigar##T7 Veigar|https://www.elobuddy.net/topic/16131-t7-veigarreborn-%E2%84%A2/|https://github.com/Toyota7/EloBuddy",
+    "Vel'Koz##Seeker Vel'Koz|https://www.elobuddy.net/topic/12040-counters-seekervelkoz/|https://github.com/CounterFX/EloBuddy-Addons", 
+	"Vi##Unsigned Vi|https://www.elobuddy.net/topic/43896-updated-unsigned-vi-1000/|https://github.com/Sicryption/EloBuddyAddons/", 
+	"Viktor##KappAIO|https://www.elobuddy.net/topic/38467-kappaio-new-sion-orianna/|https://github.com/plsfixrito/KappAIO",
+    "Vladimir##Vladimir the Troll|https://www.elobuddy.net/topic/26116-620vladimirthe-troll-1172016version-14-rework-last-hit-fix-cast-e-perfect-no-stop-walk-auto-w-dodge-skillshot/|https://github.com/MeLoDagG/Elobuddy",
+    "Volibear##Polarbear Volibear|https://www.elobuddy.net/topic/43826-622-polar-bear-volibear/|https://github.com/scarEl/EloBuddy",
     "Warwick",
-    "Wukong##Doctor's Wukong|https://github.com/MBalack/Balles",
-    "Xerath##Xerath - The Ascended|https://github.com/Hellsing/EloBuddy-Addons/",
-    "Xin Zhao##Sur's Xin Zhao|https://github.com/WeinerCH/EB", 
-	"Yasuo##Unsigned Yasuo|https://github.com/Sicryption/EloBuddyAddons/##The New Yasuo|https://github.com/DuckSong/",
-    "Yorick##Lazy Yorick|https://github.com/DamnedN00b/EloBuddy",
+    "Wukong##Doctor's Wukong|https://www.elobuddy.net/topic/40172-doctors-wukong/|https://github.com/MBalack/Balles",
+    "Xerath##Xerath - The Ascended|https://www.elobuddy.net/topic/6020-xerath-the-ascended/|https://github.com/Hellsing/EloBuddy-Addons/",
+    "Xin Zhao##Sur's Xin Zhao|https://www.elobuddy.net/topic/43106-622-surs-xin%E2%84%A2-jungleclear-added-smite-support/|https://github.com/WeinerCH/EB", 
+	"Yasuo##Unsigned Yasuo|https://www.elobuddy.net/topic/1823-updated-unsigned-yasuo-3000-yasuo/|https://github.com/Sicryption/EloBuddyAddons/",
+    "Yorick##Lazy Yorick|https://www.elobuddy.net/topic/25995-621-thenewyasuo-englishportugu%C3%AAs/|https://github.com/DamnedN00b/EloBuddy",
     "Zac",
-    "Zed##Korean AIO|https://github.com/jachicao/EloBuddy",
-    "Ziggs##Wladis Ziggs|https://github.com/wladi0/Elobuddy", 
-	"Zilean##UB Zilean|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
-    "Zyra##Sur's Zyra|https://github.com/WeinerCH/EB"];
+    "Zed##Korean AIO|https://www.elobuddy.net/topic/12295-korean-aio-mid-added-xerath-added-syndra/|https://github.com/jachicao/EloBuddy",
+    "Ziggs##Wladis Ziggs|https://www.elobuddy.net/topic/43564-621-wladis-ziggs/|https://github.com/wladi0/Elobuddy", 
+	"Zilean##UB Zilean|https://www.elobuddy.net/topic/43564-621-wladis-ziggs/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
+    "Zyra##Sur's Zyra|https://www.elobuddy.net/topic/44043-622-surs-zyra%E2%84%A2-update-1/|https://github.com/WeinerCH/EB"];
 		
 	//populating main list
     function CreateChampionList()
@@ -263,7 +254,7 @@
 			
             championList.appendChild(newChampionListItem);
         }
-    }
+    }	
 	//when clicking the champion
     function LoadChampionScripts(evt)
     {	
@@ -292,26 +283,50 @@
 			var scriptName = championNames[champIndex].split('##')[i].split('|')[0];
             var newListItem = document.createElement("li");
             var newListItemNode = document.createTextNode(scriptName);
-			newListItem.onclick = function () { LoadURL(this, champIndex); };
+			
             newListItem.appendChild(newListItemNode);
 			
-			//var githubButton = document.createElement("button");
+			var githubButton = document.createElement("button");
+			githubButton.innerHTML = "GitHub";
+			githubButton.onclick = function () { launchGitHub(this, champIndex); };
+			var forumButton = document.createElement("button");
+			forumButton.innerHTML = "Forum";
+			forumButton.onclick = function () { launchForum(this, champIndex); };
+			//var installButton = document.createElement("button");
+			//installButton.innerHTML = "Install";
+			//installButton.onclick = function () { launchInstall(this); };
+						
+			newListItem.appendChild(githubButton);
+			newListItem.appendChild(forumButton);
+			//newListItem.appendChild(installButton);
 			
             scriptList.appendChild(newListItem);
 			
 		}
     }
 	//when clicking the script
-    function LoadURL(element, champIndex)
+    function LoadURL(element, champIndex, linkIndex)
     {
 		for(i = 1; i < championNames[champIndex].split('##').length; i++)
 		{	
-			if(championNames[champIndex].split('##')[i].includes(element.innerHTML))
+			if(championNames[champIndex].split('##')[i].includes(element.parentNode.innerHTML.split("<")[0]))
 			{
-				var scriptURL = championNames[champIndex].split('##')[i].split('|')[1];
+				var scriptURL = championNames[champIndex].split('##')[i].split('|')[linkIndex+1];
 				window.open(scriptURL);
 			}
 		}
+	}
+	function launchGitHub(element, champIndex)
+	{
+		LoadURL(element, champIndex, 1);
+	}
+	function launchForum(element, champIndex)
+	{
+		LoadURL(element, champIndex, 0);
+	}
+	function launchInstall(element, champIndex)
+	{
+		LoadURL(element, champIndex, 2);
 	}
 </script>
 </html>
