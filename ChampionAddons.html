@@ -18,7 +18,7 @@
 
 </head>
 
-<body onload="CreateChampionList()">
+<body onload="CreateChampionList('True')">
   <div class="wrapper">
     <div id="container">
       <p class="tagline">
@@ -35,7 +35,7 @@
         </div>
         <article class="markdown-body">
 			<div>
-				<input id="championSearchTextbox" class="searchBoxes" type="text" autocomplete="off" name="championSearch" placeholder="Search by Champion.." oninput="CreateChampionList()"/>
+				<input id="championSearchTextbox" class="searchBoxes" type="text" autocomplete="off" name="championSearch" placeholder="Search by Champion.." oninput="CreateChampionList('False')"/>
 				</div>
 			<div class="addonlist">
 				<ol id="championList" class="primary">
@@ -211,12 +211,20 @@
     "Zyra##Sur's Zyra|https://www.elobuddy.net/topic/44043-622-surs-zyra%E2%84%A2-update-1/|https://github.com/WeinerCH/EB/"];
 		
 	//populating main list
-    function CreateChampionList()
+    function CreateChampionList(initial)
     {
         var element = document.getElementById("championSearchTextbox");
         var championList = document.getElementById("championList");
         var scriptList = document.getElementById("scriptList");
-
+		
+		if(initial == 'True')
+		{
+			var url = window.location.href;
+			
+			if(url.includes("?"))
+				element.value = url.split("?")[1];
+		}
+		
         var possibleChampions = new Array();
 
         for (i = 0; i < championNames.length; i++)

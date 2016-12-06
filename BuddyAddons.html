@@ -18,7 +18,7 @@
 
 </head>
 
-<body onload="CreateChampionList()">
+<body onload="CreateChampionList('true')">
   <div class="wrapper">
     <div id="container">
       <p class="tagline">
@@ -35,7 +35,7 @@
         </div>
         <article class="markdown-body">
 			<div>
-				<input id="championSearchTextbox" class="searchBoxes" type="text" autocomplete="off" name="championSearch" placeholder="Search by Champion.." oninput="CreateChampionList()"/>
+				<input id="championSearchTextbox" class="searchBoxes" type="text" autocomplete="off" name="championSearch" placeholder="Search by Champion.." oninput="CreateChampionList('false')"/>
 				</div>
 			<div class="addonlist">
 				<ol id="championList" class="primary">
@@ -82,12 +82,20 @@
 	];
 		
 	//populating main list
-    function CreateChampionList()
+    function CreateChampionList(initial)
     {
         var element = document.getElementById("championSearchTextbox");
         var championList = document.getElementById("championList");
         var scriptList = document.getElementById("scriptList");
 
+		if(initial == 'True')
+		{
+			var url = window.location.href;
+			
+			if(url.includes("?"))
+				element.value = url.split("?")[1];
+		}
+		
         var possibleChampions = new Array();
 
         for (i = 0; i < championNames.length; i++)
