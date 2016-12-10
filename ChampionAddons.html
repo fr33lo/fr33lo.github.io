@@ -285,7 +285,7 @@
 		
 		var champIndex = -1;
 		for(i = 0; i < championNames.length; i++)
-			if(championNames[i].split('##')[0].includes(evt.innerHTML))
+			if(championNames[i].split('##')[0].toLowerCase() == evt.innerHTML.toLowerCase())
 				champIndex = i;
 		
         while (scriptList.hasChildNodes())
