@@ -684,7 +684,7 @@ a.addon-button {
   background: #444444;
   height: auto;
   margin-right: 10px;
-}
+}	
 
 a.addon-button span {
   background-position: 10px 5px;
@@ -694,6 +694,27 @@ a.addon-button span {
   display: inline-block;
   text-indent: 0!important;
   color: #fff;
+}
+
+a.addon-button-selected {
+  border: 1px solid black;
+  display: inline-block;
+  text-indent: 0!important;
+  width: auto;
+  float: left;
+  background: #EEE;
+  height: auto;
+  margin-right: 10px;
+}	
+
+a.addon-button-selected span {
+  background-position: 10px 5px;
+  width: auto;
+  height: auto;
+  padding: 5px 10px;
+  display: inline-block;
+  text-indent: 0!important;
+  color: #444444;
 }
 
 footer {
