@@ -37,12 +37,12 @@
 			<div>
 				<input id="championSearchTextbox" class="searchBoxes" type="text" autocomplete="off" name="championSearch" placeholder="Search by Champion.." oninput="CreateChampionList('False')"/>
 				
-				<input id="SupportType" type="image" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/2380994.png?459" /><!-- Support -->
-				<input id="TankType" type="image" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/3507982_orig.png" /><!-- Tank -->
-				<input id="FighterType" type="image" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/6971182_orig.png" /><!-- Fighter -->
-				<input id="MageType" type="image" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/2160346_orig.png" /><!-- Mage -->
-				<input id="AssasinType" type="image" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/6959784.png?316" /><!-- Assasin -->
-				<input id="MarksmanType" type="image" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/185800.png?340" /><!-- Marksman -->
+				<input id="SupportType" type="image" alt="Support" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/2380994.png?459" /><!-- Support -->
+				<input id="TankType" type="image" alt="Tank" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/3507982_orig.png" /><!-- Tank -->
+				<input id="FighterType" type="image" alt="Fighter" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/6971182_orig.png" /><!-- Fighter -->
+				<input id="MageType" type="image" alt="Mage" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/2160346_orig.png" /><!-- Mage -->
+				<input id="AssasinType" type="image" alt="Assasin" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/6959784.png?316" /><!-- Assasin -->
+				<input id="MarksmanType" type="image" alt="Marksman" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/185800.png?340" /><!-- Marksman -->
 				</p>
 				</div>
 			<div class="addonlist">
@@ -375,11 +375,11 @@
 		else if(element.id == "TankType")
 			typeChampions = ["Alistar", "Amumu", "Blitzcrank", "Braum", "Cho'Gath", "Darius", "Dr. Mundo", "Galio", "Garen", "Gnar", "Hecarim", "Illaoi", "Jarvan IV", "Kled", "Leona", "Malphite", "Maokai", "Nasus", "Nautilus", "Olaf", "Poppy", "Rammus", "Renekton", "Sejuani", "Shen", "Shyvana", "Singed", "Sion", "Skarner", "Tahm Kench", "Trundle", "Udyr", "Vladimir", "Volibear", "Warwick", "Wukong", "Yorick", "Zac"];	
 		else if(element.id == "FighterType")
-			typeChampions = ["Aatrox", "Blitzcrank", "Camille", "Darius", "Ekko", "Fiora", "Fizz", "Gangplank", "Garen", "Gnar", "Hecarim", "Illaoi", "Irelia", "Jarvan IV", "Jax", "Jayce", "Kayle", "Kha'Zix", "Kled", "Lee Sin", "Malphite", "Master Yi", "Mordekaiser", "Nasus", "Nautilus", "Nidalee", "Nocturne", "Olaf", "Pantheon", "Poppy", "Quinn", "Rammus", "Rek'Sai", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", "Sejuani", "Shyvana", "Singed", "Sion", "Skarner", "Swain", "Talon", "Taric", "Trundle", "Tryndamere", "Udyr", "Urgot", "Vi", "Volibear", "Warwick", "Wukong", "Xin Zhao", "Yasuo", "Yorick", "Zac", "Zed"];	
+			typeChampions = ["Aatrox", "Blitzcrank", "Camille", "Darius", "Diana", "Ekko", "Fiora", "Fizz", "Gangplank", "Garen", "Gnar", "Hecarim", "Illaoi", "Irelia", "Jarvan IV", "Jax", "Jayce", "Kayle", "Kha'Zix", "Kled", "Lee Sin", "Malphite", "Master Yi", "Mordekaiser", "Nasus", "Nautilus", "Nidalee", "Nocturne", "Olaf", "Pantheon", "Poppy", "Quinn", "Rammus", "Rek'Sai", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", "Sejuani", "Shyvana", "Singed", "Sion", "Skarner", "Swain", "Talon", "Taric", "Trundle", "Tryndamere", "Udyr", "Urgot", "Vi", "Volibear", "Warwick", "Wukong", "Xin Zhao", "Yasuo", "Yorick", "Zac", "Zed"];	
 		else if(element.id == "MageType")
 			typeChampions = ["Ahri", "Amumu", "Anivia", "Annie", "Aurelion Sol", "Azir", "Bard", "Brand", "Cassiopeia", "Cho'Gath", "Diana", "Elise", "Evelynn", "Ezreal", "Fiddlesticks", "Galio", "Gragas", "Heimerdinger", "Ivern", "Janna", "Karma", "Karthus", "Kassadin", "Katarina", "Kennen", "Kog'Maw", "LeBlanc", "Lissandra", "Lulu", "Lux", "Malzahar", "Maokai", "Morgana", "Nami", "Orianna", "Rumble", "Ryze", "Sona", "Soraka", "Swain", "Syndra", "Taliyah", "Twisted Fate", "Varus", "Veigar", "Vel'Koz", "Viktor", "Vladimir", "Xerath", "Ziggs", "Zilean", "Zyra"];
 		else if(element.id == "AssasinType")
-			typeChampions = ["Ahri", "Akali", "Fizz", "Kassadin", "Katarina", "Kha'Zix", "LeBlanc", "Nidalee", "Rengar", "Shaco", "Talon", "Zed"];
+			typeChampions = ["Ahri", "Akali", "Diana", "Ekko", "Evelynn", "Fizz", "Kassadin", "Katarina", "Kha'Zix", "LeBlanc", "Master Yi", "Nidalee", "Nocturne", "Rengar", "Shaco", "Talon", "Zed"];
 		else if(element.id == "MarksmanType")
 			typeChampions = ["Ashe", "Caitlyn", "Corki", "Draven", "Ezreal", "Graves", "Jayce", "Jhin", "Jinx", "Kalista", "Kennen", "Kindred", "Kog'Maw", "Lucian", "Miss Fortune", "Quinn", "Sivir", "Teemo", "Tristana", "Twitch", "Urgot", "Varus", "Vayne"];
 		
