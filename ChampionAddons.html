@@ -43,6 +43,11 @@
 				<input id="MageType" type="image" alt="Mage" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/2160346_orig.png" /><!-- Mage -->
 				<input id="AssasinType" type="image" alt="Assasin" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/6959784.png?316" /><!-- Assasin -->
 				<input id="MarksmanType" type="image" alt="Marksman" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/185800.png?340" /><!-- Marksman -->
+				<select id="ChampionListType" class="comboBox" onchange="CreateChampionList('False')">
+					<option value="AllChamps">All Champions</option>
+					<option selected="selected" value="ScriptsAvailable">Scripts Available</option>
+					<option value="ScriptsNotAvailable">Scripts not Available</option>
+				</select>
 				</p>
 				</div>
 			<div class="addonlist">
@@ -224,6 +229,7 @@
         var element = document.getElementById("championSearchTextbox");
         var championList = document.getElementById("championList");
         var scriptList = document.getElementById("scriptList");
+		var comboBox = document.getElementById("ChampionListType");
 		
 		if(initial == 'True')
 		{
@@ -237,7 +243,14 @@
 
         for (i = 0; i < championNames.length; i++)
             if (championNames[i].split("##")[0].toLowerCase().includes(element.value.toLowerCase()))
-                possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+			{
+				if(comboBox.value == "AllChamps")
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				else if(comboBox.value == "ScriptsAvailable" && championNames[i].split("##").length > 1)
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				else if(comboBox.value == "ScriptsNotAvailable" && championNames[i].split("##").length == 1)
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+			}
 		
         while (championList.hasChildNodes())
             championList.removeChild(championList.lastChild);
@@ -368,6 +381,7 @@
 	{
         var championList = document.getElementById("championList");
         var scriptList = document.getElementById("scriptList");
+		var comboBox = document.getElementById("ChampionListType");
 		
 		var typeChampions;
 		if(element.id == "SupportType")
@@ -388,7 +402,14 @@
 
         for (i = 0; i < championNames.length; i++)
             if (typeChampions.includes(championNames[i].split("##")[0]))
-                possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				{
+					if(comboBox.value == "AllChamps")
+						possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+					else if(comboBox.value == "ScriptsAvailable" && championNames[i].split("##").length > 1)
+						possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+					else if(comboBox.value == "ScriptsNotAvailable" && championNames[i].split("##").length == 1)
+						possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				}
 		
         while (championList.hasChildNodes())
             championList.removeChild(championList.lastChild);
