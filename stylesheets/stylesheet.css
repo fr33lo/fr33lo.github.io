@@ -811,6 +811,10 @@ footer .owner p a {
   height:50px;
 }
 
+.markdown-body input[type=image]:focus{
+  outline: 0px;
+}
+
 .feedback { font-size: 1.4em; }
 .championList .ui-selecting { background: #FECA40; }
 .championList .ui-selected { background: #F39814; color: white; }

@@ -43,13 +43,15 @@
 				<input id="MageType" type="image" alt="Mage" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/2160346_orig.png" /><!-- Mage -->
 				<input id="AssasinType" type="image" alt="Assasin" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/6959784.png?316" /><!-- Assasin -->
 				<input id="MarksmanType" type="image" alt="Marksman" onclick="sortChampionByType(this)" src="http://gamin-123-lol.weebly.com/uploads/4/2/5/0/42507289/185800.png?340" /><!-- Marksman -->
+			</div>
+			<div>
 				<select id="ChampionListType" class="comboBox" onchange="CreateChampionList('False')">
 					<option value="AllChamps">All Champions</option>
 					<option selected="selected" value="ScriptsAvailable">Scripts Available</option>
 					<option value="ScriptsNotAvailable">Scripts Not Available</option>
 				</select>
 				</p>
-				</div>
+			</div>
 			<div class="addonlist">
 				<ol id="championList" class="primary"></ol>
 				<ol id="scriptList" class="secondary"></ol>
@@ -348,6 +350,8 @@
         var championList = document.getElementById("championList");
 		var comboBox = document.getElementById("ChampionListType");
 		
+		var listIds = ["SupportType", "TankType", "FighterType", "MageType", "AssasinType", "MarksmanType"];
+		
 		var typeChampions;
 		if(element.id == "SupportType")
 			typeChampions = ["Alistar", "Anivia", "Annie", "Bard", "Blitzcrank", "Braum", "Brand", "Ivern", "Janna", "Karma", "Leona", "Lulu", "Lux", "Miss Fortune", "Morgana", "Nami", "Nautilus", "Nunu", "Poppy", "Shen", "Sion", "Sona", "Soraka", "Tahm Kench", "Taric", "Thresh", "Trundle", "Vel'Koz", "Volibear",	 "Zilean", "Zyra"];
@@ -362,19 +366,41 @@
 		else if(element.id == "MarksmanType")
 			typeChampions = ["Ashe", "Caitlyn", "Corki", "Draven", "Ezreal", "Graves", "Jayce", "Jhin", "Jinx", "Kalista", "Kennen", "Kindred", "Kog'Maw", "Lucian", "Miss Fortune", "Quinn", "Sivir", "Teemo", "Tristana", "Twitch", "Urgot", "Varus", "Vayne"];
 		
+		if(element.value == "selected")
+		{
+			for(i = 0; i < listIds.length; i++)
+			{
+				document.getElementById(listIds[i]).value = "notselected";
+				document.getElementById(listIds[i]).style.borderColor = "#000000";
+			}
+			element.value = "notselected";
+			element.style.borderColor = "#000000";
+			CreateChampionList("False");
+			return;
+		}
+		else
+		{
+			for(i = 0; i < listIds.length; i++)
+			{
+				document.getElementById(listIds[i]).value = "notselected";
+				document.getElementById(listIds[i]).style.borderColor = "#000000";
+			}
+			element.value = "selected";
+			element.style.borderColor = "#F39814";
+		}
 		
 		var possibleChampions = new Array();
 			
         for (i = 0; i < championNames.length; i++)
             if (typeChampions.includes(championNames[i].split("##")[0]))
-				{
-					if(comboBox.value == "AllChamps")
-						possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
-					else if(comboBox.value == "ScriptsAvailable" && championNames[i].split("##").length > 1)
-						possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
-					else if(comboBox.value == "ScriptsNotAvailable" && championNames[i].split("##").length == 1)
-						possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
-				}
+			{
+				if(comboBox.value == "AllChamps")
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				else if(comboBox.value == "ScriptsAvailable" && championNames[i].split("##").length > 1)
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				else if(comboBox.value == "ScriptsNotAvailable" && championNames[i].split("##").length == 1)
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+			}
 		
 		AddChampionsToList(possibleChampions);
 	}
