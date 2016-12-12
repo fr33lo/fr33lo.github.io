@@ -401,7 +401,7 @@
 				else if(comboBox.value == "ScriptsNotAvailable" && championNames[i].split("##").length == 1)
 					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
 			}
-		
+			
 		AddChampionsToList(possibleChampions);
 	}
 	function AddChampionsToList(possibleChampions)
@@ -414,8 +414,9 @@
 			
         while (championList.hasChildNodes())
             championList.removeChild(championList.lastChild);
-
-		var setChampion = "false";
+		
+		var hasChampion = "false";
+		var thingToLoad;
         for(i = 0; i < possibleChampions.length; i++)
         {
             var newChampionListItem = document.createElement("li");	
@@ -445,14 +446,16 @@
 			
             championList.appendChild(newChampionListItem);
 			
-			if(possibleChampions[i].split("##")[0] == championList.value)
+			if(possibleChampions[i].includes(championList.value))
 			{	
-				LoadChampionScripts(newChampionListItem);
-				setChampion = "true";
+				thingToLoad = newChampionListItem;
+				hasChampion = "true";
 			}
         }
-		if(setChampion == "false")
+		if(hasChampion == "false")
 			championList.value = null;
+		else
+			LoadChampionScripts(thingToLoad);
 	}
 </script>
 </html>
