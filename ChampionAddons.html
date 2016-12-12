@@ -51,17 +51,7 @@
 				</p>
 				</div>
 			<div class="addonlist">
-				<ol id="championList" class="primary">
-				  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-				  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-				  <script>
-						$(
-						  function () {
-								$("#championList").selectable();
-							}
-						);
-				  </script>
-				</ol>
+				<ol id="championList" class="primary"></ol>
 				<ol id="scriptList" class="secondary"></ol>
 			</div>
        </article>
@@ -228,7 +218,6 @@
     {
         var element = document.getElementById("championSearchTextbox");
         var championList = document.getElementById("championList");
-        var scriptList = document.getElementById("scriptList");
 		var comboBox = document.getElementById("ChampionListType");
 		
 		if(initial == 'True')
@@ -252,51 +241,29 @@
 					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
 			}
 		
-        while (championList.hasChildNodes())
-            championList.removeChild(championList.lastChild);
-
-        for(i = 0; i < possibleChampions.length; i++)
-        {
-            var newChampionListItem = document.createElement("li");	
-            var newChampionListItemNode = document.createTextNode(possibleChampions[i].split('##')[0]);
-            newChampionListItem.onclick = function () { LoadChampionScripts(this); };
-
-            newChampionListItem.appendChild(newChampionListItemNode);
-			if(newChampionListItem.innerHTML == "Cho'Gath")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Chogath.png')";
-			else if(newChampionListItem.innerHTML == "Kha'Zix")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Khazix.png')";
-			else if(newChampionListItem.innerHTML == "Vel'Koz")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Velkoz.png')";
-			else if(newChampionListItem.innerHTML == "Fiddlesticks")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/FiddleSticks.png')";
-			else if(newChampionListItem.innerHTML == "Wukong")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/MonkeyKing.png')";
-			else if(newChampionListItem.innerHTML == "LeBlanc")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Leblanc.png')";
-			else
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/" + possibleChampions[i].split('##')[0].replace(" ", "").replace("'", "").replace(".", "") + ".png')";
-			
-			newChampionListItem.style.backgroundSize = "30px 30px";
-			newChampionListItem.style.backgroundPosition = "right";
-			//	newChampionListItem.style.backgroundImage
-			newChampionListItem.style.backgroundRepeat = "no-repeat";
-			
-			if(possibleChampions.length == 1 && initial == 'True')
-			{
-				LoadChampionScripts(newChampionListItem);
-				newChampionListItem.style.backgroundColor = "#F39814";
-				newChampionListItem.style.color = "white";
-			}
-            championList.appendChild(newChampionListItem);
-        }			
+		AddChampionsToList(possibleChampions);
     }	
 	//when clicking the champion
     function LoadChampionScripts(evt)
     {	
         var scriptList = document.getElementById("scriptList");
+        var championList = document.getElementById("championList");
+		var oldSelectedItem = document.getElementById(championList.value);
 		
+		if(oldSelectedItem != null)
+		{
+			oldSelectedItem.style.backgroundColor = "#FFF";
+			oldSelectedItem.style.color = "black";
+		}
+		
+		evt.style.backgroundColor = "#F39814";
+		evt.style.color = "white";
+		
+		//set newly selected entity
+		championList.value = evt.id;
+			
 		var champIndex = -1;
+		
 		for(i = 0; i < championNames.length; i++)
 			if(championNames[i].split('##')[0].toLowerCase() == evt.innerHTML.toLowerCase())
 				champIndex = i;
@@ -304,7 +271,7 @@
         while (scriptList.hasChildNodes())
             scriptList.removeChild(scriptList.lastChild);
 			
-			//champs with no addons
+		//champs with no addons
 		if(championNames[champIndex].split('##').length == 1)
 		{
 			scriptName = "None available for this champion";
@@ -338,7 +305,6 @@
 			newListItem.appendChild(installButton);
 			
             scriptList.appendChild(newListItem);
-			
 		}
     }
 	//when clicking the script
@@ -380,7 +346,6 @@
 	function sortChampionByType(element)
 	{
         var championList = document.getElementById("championList");
-        var scriptList = document.getElementById("scriptList");
 		var comboBox = document.getElementById("ChampionListType");
 		
 		var typeChampions;
@@ -399,7 +364,7 @@
 		
 		
 		var possibleChampions = new Array();
-
+			
         for (i = 0; i < championNames.length; i++)
             if (typeChampions.includes(championNames[i].split("##")[0]))
 				{
@@ -411,9 +376,20 @@
 						possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
 				}
 		
+		AddChampionsToList(possibleChampions);
+	}
+	function AddChampionsToList(possibleChampions)
+	{
+        var championList = document.getElementById("championList");
+        var scriptList = document.getElementById("scriptList");
+
+        while (scriptList.hasChildNodes())
+            scriptList.removeChild(scriptList.lastChild);
+			
         while (championList.hasChildNodes())
             championList.removeChild(championList.lastChild);
 
+		var setChampion = "false";
         for(i = 0; i < possibleChampions.length; i++)
         {
             var newChampionListItem = document.createElement("li");	
@@ -438,11 +414,19 @@
 			
 			newChampionListItem.style.backgroundSize = "30px 30px";
 			newChampionListItem.style.backgroundPosition = "right";
-			//newChampionListItem.style.backgroundImage
 			newChampionListItem.style.backgroundRepeat = "no-repeat";
+			newChampionListItem.id = possibleChampions[i].split("##")[0];
 			
             championList.appendChild(newChampionListItem);
-        }		
+			
+			if(possibleChampions[i].split("##")[0] == championList.value)
+			{	
+				LoadChampionScripts(newChampionListItem);
+				setChampion = "true";
+			}
+        }
+		if(setChampion == "false")
+			championList.value = null;
 	}
 </script>
 </html>

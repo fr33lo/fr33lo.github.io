@@ -810,6 +810,15 @@ footer .owner p a {
   width:60px;
   height:50px;
 }
+
+.feedback { font-size: 1.4em; }
+.championList .ui-selecting { background: #FECA40; }
+.championList .ui-selected { background: #F39814; color: white; }
+.championList { list-style-type: none; margin: 0; padding: 0; width: 30% }
+.championList li { margin: 0px; padding: 5px 5px 10px 5px; font-size: 16px; height: 14px; }
+.scriptList { list-style-type: none; margin: 0; padding: 0; width: 30% }
+.scriptList li { margin: 3px; padding: 5px; font-size: 16px; height: 14px; }
+  
 .markdown-body h3 {
   font-size: 20px;
 }
