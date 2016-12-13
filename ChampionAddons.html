@@ -95,7 +95,7 @@
 	"Brand##Sur's Brand|https://www.elobuddy.net/topic/44194-622-surs-brand%E2%84%A2-el-regreso-release/|https://github.com/WeinerCH/EB##UB Middle|https://www.elobuddy.net/topic/44536-624-ubmiddle-beta-release-syndra-added/|https://github.com/Uzumaki-Boruto/AIO",
 	"Braum", 
 	"Caitlyn##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/##O4W AIO|https://www.elobuddy.net/topic/6545-o4w-ad-carry-151jinx-beta-release/|https://github.com/mrarticuno/Elobuddy##Caitlyn the Troll|https://www.elobuddy.net/topic/30200-621caitlyn-the-troll-version-16-27-10-2016-add-eq-keybind-smart-ulty-full-customizable-full-passive-dmg/|https://github.com/MeLoDagG/Elobuddy", 
-	//"Camille##Unsigned Camille||https://github.com/Sicryption/EloBuddyAddons/", 
+	"Camille##Unsigned Camille|https://www.elobuddy.net/topic/45469-updated-unsigned-camille-1000/|https://github.com/Sicryption/EloBuddyAddons/##Ronin Camille|https://www.elobuddy.net/topic/45455-624-ronin-camille-combos-clears-ks-autoharass-e/|https://github.com/Taazuma/EB-T##CamilleZero|https://www.elobuddy.net/topic/45416-624-camillezero/|https://github.com/her0gamer3/EloBuddy", 
 	"Cassiopeia##Wladis Cassiopeia|https://www.elobuddy.net/topic/43483-622-wladis-cassiopeia/|https://github.com/wladi0/Elobuddy##UB Middle|https://www.elobuddy.net/topic/44536-623-ubmiddle-beta-release/|https://github.com/Uzumaki-Boruto/AIO##Korean AIO|https://www.elobuddy.net/topic/12295-korean-aio-mid-orianna-fixed/https://github.com/finndev/iCreative-Mirror/",
 	"Cho'Gath",
 	"Corki##Marksman AIO|https://www.elobuddy.net/topic/40278-622-marksman-master-an-aio-for-adc-players/|https://github.com/Daeral/Marksman-AIO/", 
@@ -153,7 +153,7 @@
     "Mordekaiser",
     "Morgana##WuMorgana|https://www.elobuddy.net/topic/9719-62-wumorgana-bestqseverconfigurable-e-usagegood-w-logic/|https://github.com/WujuSan/EloBuddy##Flipper's Morgana|https://www.elobuddy.net/topic/44501-flipperrs-morgana-e-crowd-control-logic/|https://github.com/flipperr/flipperrsMorgana",
     "Nami##Moony Nami|https://www.elobuddy.net/topic/22321-620-moony-nami/|https://www.elobuddy.net/topic/22321-620-moony-nami/",
-    "Nasus##Ronin Nasus|https://www.elobuddy.net/topic/29567-621-ronin-nasus-nasus-addon-combos-clears-q-lasthit-r-at-xhp/|https://github.com/Taazuma/EB-T",
+    "Nasus##Ronin Nasus|https://www.elobuddy.net/topic/29567-621-ronin-nasus-nasus-addon-combos-clears-q-lasthit-r-at-xhp/|https://github.com/Taazuma/EB-T##Nebula Nasus|https://www.elobuddy.net/topic/45467-624-nebula-nasus|https://github.com/GoldFiish/Elobuddy",
     "Nautilus",
     "Nidalee##UB Nidalee|https://www.elobuddy.net/topic/25930-621-ubnidalee-update-1010-auto-jump-system-cooldown-tracker-more-video/|https://github.com/Uzumaki-Boruto/EloBuddy-Addons",
     "Nocturne##Ronin Nocturne|https://www.elobuddy.net/topic/25806-621-ronin-tune-nocturne-addon-combo-clears-w-blockspell-more/|https://github.com/Taazuma/EB-T", 
@@ -423,21 +423,26 @@
             var newChampionListItemNode = document.createTextNode(possibleChampions[i].split('##')[0]);
             newChampionListItem.onclick = function () { LoadChampionScripts(this); };
 
+			var urlLink = "url('http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/";
+			var champName = "";
             newChampionListItem.appendChild(newChampionListItemNode);
+			
 			if(newChampionListItem.innerHTML == "Cho'Gath")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Chogath.png')";
+				champName = "Chogath";
 			else if(newChampionListItem.innerHTML == "Kha'Zix")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Khazix.png')";
+				champName = "Khazix";
 			else if(newChampionListItem.innerHTML == "Vel'Koz")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Velkoz.png')";
+				champName = "Velkoz";
 			else if(newChampionListItem.innerHTML == "Fiddlesticks")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/FiddleSticks.png')";
+				champName = "FiddleSticks";
 			else if(newChampionListItem.innerHTML == "Wukong")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/MonkeyKing.png')";
+				champName = "MonkeyKing";
 			else if(newChampionListItem.innerHTML == "LeBlanc")
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Leblanc.png')";
+				champName = "Leblanc";
 			else
-				newChampionListItem.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/" + possibleChampions[i].split('##')[0].replace(" ", "").replace("'", "").replace(".", "") + ".png')";
+				champName = possibleChampions[i].split('##')[0].replace(" ", "").replace("'", "").replace(".", "");
+			
+			newChampionListItem.style.backgroundImage = urlLink + champName + ".png')";
 			
 			newChampionListItem.style.backgroundSize = "30px 30px";
 			newChampionListItem.style.backgroundPosition = "right";
