@@ -227,7 +227,10 @@
 			var url = window.location.href;
 			
 			if(url.includes("?"))
+			{
 				element.value = url.split("?")[1].replace("%20", " ");
+				comboBox.value = "AllChamps";
+			}
 		}
 		
         var possibleChampions = new Array();
@@ -456,6 +459,9 @@
 				thingToLoad = newChampionListItem;
 				hasChampion = "true";
 			}
+			
+			if(possibleChampions.length == 1)
+				LoadChampionScripts(newChampionListItem);
         }
 		if(hasChampion == "false")
 			championList.value = null;
