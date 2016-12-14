@@ -232,6 +232,16 @@
 				comboBox.value = "AllChamps";
 			}
 		}
+		else
+		{
+			var listIds = ["SupportType", "TankType", "FighterType", "MageType", "AssasinType", "MarksmanType"];
+			
+			for(i = 0; i < listIds.length; i++)
+			{
+				document.getElementById(listIds[i]).value = "notselected";
+				document.getElementById(listIds[i]).style.borderColor = "#000000";
+			}
+		}
 		
         var possibleChampions = new Array();
 
