@@ -1,0 +1,326 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/github-dark.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>EloBuddy Addon Database</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body onload="CreateChampionList('True')">
+  <div class="wrapper">
+    <div id="container">
+      <p class="tagline">
+		EloBuddy Addon Database
+	  </p>
+      <div id="main" role="main">
+        <div class="addon-bar">
+			<div class="inner">
+			  <a href="index" class="addon-button"><span>Home</span></a>
+			  <a href="ChampionAddons" class="addon-button"><span>Champion Addons</span></a>
+			  <a href="BuddyAddons" class="addon-button"><span>Buddy Addons</span></a>
+			  <a href="UtilityAddons" class="addon-button"><span>Utility Addons</span></a>
+			  <a href="PaidAddons" class="addon-button-selected"><span>Paid Addons</span></a>
+			</div>
+        </div>
+		<div class="separator">
+			<p class="text">
+				These addons are pay-to-use. If you would like an addon that doesn't exist, get in contact with a developer and see if they would be willing to make one for you. 
+			</p>
+		</div>
+        <article class="markdown-body">
+			<div>
+				<input id="championSearchTextbox" class="searchBoxes" type="text" autocomplete="off" name="championSearch" placeholder="Search by Champion.." oninput="CreateChampionList('False')"/>
+			</div>
+			<div class="addonlist">
+				<ol id="championList" class="primary"></ol>
+				<ol id="scriptList" class="secondary"></ol>
+			</div>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+		<p><a href="https://www.elobuddy.net/profile/1798-chaos/" class="avatar"><img src="https://avatars1.githubusercontent.com/u/10889516?v=3&amp;s=60" width="48" height="48"></a> <a href="https://www.elobuddy.net/profile/1798-chaos/">Chaos</a> developed this Addon Database.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+
+<style>
+  #feedback { font-size: 1.4em; }
+  #championList .ui-selecting { background: #FECA40; }
+  #championList .ui-selected { background: #F39814; color: white; }
+  #championList { list-style-type: none; margin: 0; padding: 0; width: 30% }
+  #championList li { margin: 0px; padding: 5px 5px 10px 5px; font-size: 16px; height: 14px; }
+  #scriptList .ui-selecting { background: #FECA40; }
+  #scriptList .ui-selected { background: #F39814; color: white; }
+  #scriptList { list-style-type: none; margin: 0; padding: 0; width: 30% }
+  #scriptList li { margin: 3px; padding: 5px; font-size: 16px; height: 14px; }
+</style>
+ 
+<script>
+	var championNames = [
+	"Caitlyn##Unsigned Caitlyn|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Ezreal##Unsigned Ezreal|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Fiora##Unsigned Fiora|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Ryze##Unsigned Ryze|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons"];
+	
+	//populating main list
+    function CreateChampionList(initial)
+    {
+        var element = document.getElementById("championSearchTextbox");
+        var championList = document.getElementById("championList");
+		var comboBox = document.getElementById("ChampionListType");
+		
+		var url = window.location.href;
+		if(url.includes("?"))
+			element.value = url.split("?")[1].replace("%20", " ");
+		
+        var possibleChampions = new Array();
+
+        for (i = 0; i < championNames.length; i++)
+            if (championNames[i].split("##")[0].toLowerCase().includes(element.value.toLowerCase()))
+				possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+		
+		AddChampionsToList(possibleChampions);
+    }	
+	//when clicking the champion
+    function LoadChampionScripts(evt)
+    {	
+        var scriptList = document.getElementById("scriptList");
+        var championList = document.getElementById("championList");
+		var oldSelectedItem = document.getElementById(championList.value);
+		
+		if(oldSelectedItem != null)
+		{
+			oldSelectedItem.style.backgroundColor = "#FFF";
+			oldSelectedItem.style.color = "black";
+		}
+		
+		evt.style.backgroundColor = "#F39814";
+		evt.style.color = "white";
+		
+		//set newly selected entity
+		championList.value = evt.id;
+			
+		var champIndex = -1;
+		
+		for(i = 0; i < championNames.length; i++)
+			if(championNames[i].split('##')[0].toLowerCase() == evt.innerHTML.toLowerCase())
+				champIndex = i;
+		
+        while (scriptList.hasChildNodes())
+            scriptList.removeChild(scriptList.lastChild);
+			
+		//champs with no addons
+		if(championNames[champIndex].split('##').length == 1)
+		{
+			scriptName = "None available for this champion";
+            var newListItem = document.createElement("li");
+            var newListItemNode = document.createTextNode(scriptName);
+            newListItem.appendChild(newListItemNode);
+            scriptList.appendChild(newListItem);
+		}
+		
+		//champs with addons
+		for(i = 1; i < championNames[champIndex].split('##').length; i++)
+		{	
+			var scriptName = championNames[champIndex].split('##')[i].split('|')[0];
+            var newListItem = document.createElement("li");
+            var newListItemNode = document.createTextNode(scriptName);
+			
+            newListItem.appendChild(newListItemNode);
+			
+			var installButton = document.createElement("button");
+			installButton.innerHTML = "Install";
+			installButton.onclick = function () { launchInstall(this, champIndex); }
+			var discordButton = document.createElement("button");
+			discordButton.innerHTML = "Discord";
+			discordButton.onclick = function () { launchDiscord(this, champIndex); };
+			var forumButton = document.createElement("button");
+			forumButton.innerHTML = "Profile";
+			forumButton.onclick = function () { launchForum(this, champIndex); };;
+						
+			newListItem.appendChild(forumButton);
+			newListItem.appendChild(discordButton);
+			newListItem.appendChild(installButton);
+			
+            scriptList.appendChild(newListItem);
+		}
+    }
+	//when clicking the script
+    function LoadURL(element, champIndex, linkIndex)
+    {
+		for(i = 1; i < championNames[champIndex].split('##').length; i++)
+		{	
+			if(championNames[champIndex].split('##')[i].includes(element.parentNode.innerHTML.split("<")[0]))
+			{
+				var scriptURL = "";
+				//github/forum link
+				if(linkIndex != 3)
+					scriptURL = championNames[champIndex].split('##')[i].split('|')[linkIndex+1];
+				//install link
+				else
+				{
+					var githubLink = championNames[champIndex].split('##')[i].split('|')[3];
+					if(githubLink[githubLink.length - 1] != '/')
+						githubLink = githubLink + "/";
+					var splitString = githubLink.split("/");
+					scriptURL = "elobuddy://" + splitString[splitString.length - 3] + "/" + splitString[splitString.length - 2];
+				}
+				window.open(scriptURL);
+			}
+		}
+	}
+	function launchGitHub(element, champIndex)
+	{
+		LoadURL(element, champIndex, 2);
+	}
+	function launchDiscord(element, champIndex)
+	{
+		LoadURL(element, champIndex, 0);
+	}
+	function launchForum(element, champIndex)
+	{
+		LoadURL(element, champIndex, 1);
+	}
+	function launchInstall(element, champIndex)
+	{
+		LoadURL(element, champIndex, 3);
+	}
+	function sortChampionByType(element)
+	{
+        var championList = document.getElementById("championList");
+		var comboBox = document.getElementById("ChampionListType");
+        var searchTextBox = document.getElementById("championSearchTextbox");
+		
+		searchTextBox.value = "";
+		
+		var listIds = ["SupportType", "TankType", "FighterType", "MageType", "AssasinType", "MarksmanType"];
+		
+		var typeChampions;
+		if(element.id == "SupportType")
+			typeChampions = ["Alistar", "Anivia", "Annie", "Bard", "Blitzcrank", "Braum", "Brand", "Ivern", "Janna", "Karma", "Leona", "Lulu", "Lux", "Miss Fortune", "Morgana", "Nami", "Nautilus", "Nunu", "Poppy", "Shen", "Sion", "Sona", "Soraka", "Tahm Kench", "Taric", "Thresh", "Trundle", "Vel'Koz", "Volibear",	 "Zilean", "Zyra"];
+		else if(element.id == "TankType")
+			typeChampions = ["Alistar", "Amumu", "Blitzcrank", "Braum", "Cho'Gath", "Darius", "Dr. Mundo", "Galio", "Garen", "Gnar", "Hecarim", "Illaoi", "Jarvan IV", "Kled", "Leona", "Malphite", "Maokai", "Nasus", "Nautilus", "Nunu", "Olaf", "Poppy", "Rammus", "Renekton", "Sejuani", "Shen", "Shyvana", "Singed", "Sion", "Skarner", "Tahm Kench", "Trundle", "Udyr", "Vladimir", "Volibear", "Warwick", "Wukong", "Yorick", "Zac"];	
+		else if(element.id == "FighterType")
+			typeChampions = ["Aatrox", "Blitzcrank", "Camille", "Darius", "Diana", "Ekko", "Fiora", "Fizz", "Gangplank", "Garen", "Gnar", "Hecarim", "Illaoi", "Irelia", "Jarvan IV", "Jax", "Jayce", "Kayle", "Kha'Zix", "Kled", "Lee Sin", "Malphite", "Master Yi", "Mordekaiser", "Nasus", "Nautilus", "Nidalee", "Nocturne", "Nunu", "Olaf", "Pantheon", "Poppy", "Quinn", "Rammus", "Rek'Sai", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", "Sejuani", "Shyvana", "Singed", "Sion", "Skarner", "Swain", "Talon", "Taric", "Trundle", "Tryndamere", "Udyr", "Urgot", "Vi", "Volibear", "Warwick", "Wukong", "Xin Zhao", "Yasuo", "Yorick", "Zac", "Zed"];	
+		else if(element.id == "MageType")
+			typeChampions = ["Ahri", "Amumu", "Anivia", "Annie", "Aurelion Sol", "Azir", "Bard", "Brand", "Cassiopeia", "Cho'Gath", "Diana", "Elise", "Evelynn", "Ezreal", "Fiddlesticks", "Galio", "Gragas", "Heimerdinger", "Ivern", "Janna", "Karma", "Karthus", "Kassadin", "Katarina", "Kennen", "Kog'Maw", "LeBlanc", "Lissandra", "Lulu", "Lux", "Malzahar", "Maokai", "Morgana", "Nami", "Nunu", "Orianna", "Rumble", "Ryze", "Sona", "Soraka", "Swain", "Syndra", "Taliyah", "Twisted Fate", "Varus", "Veigar", "Vel'Koz", "Viktor", "Vladimir", "Xerath", "Ziggs", "Zilean", "Zyra"];
+		else if(element.id == "AssasinType")
+			typeChampions = ["Ahri", "Akali", "Diana", "Ekko", "Evelynn", "Fizz", "Kassadin", "Katarina", "Kha'Zix", "LeBlanc", "Master Yi", "Nidalee", "Nocturne", "Rengar", "Shaco", "Talon", "Zed"];
+		else if(element.id == "MarksmanType")
+			typeChampions = ["Ashe", "Caitlyn", "Corki", "Draven", "Ezreal", "Graves", "Jayce", "Jhin", "Jinx", "Kalista", "Kennen", "Kindred", "Kog'Maw", "Lucian", "Miss Fortune", "Quinn", "Sivir", "Teemo", "Tristana", "Twitch", "Urgot", "Varus", "Vayne"];
+		
+		if(element.value == "selected")
+		{
+			for(i = 0; i < listIds.length; i++)
+			{
+				document.getElementById(listIds[i]).value = "notselected";
+				document.getElementById(listIds[i]).style.borderColor = "#000000";
+			}
+			element.value = "notselected";
+			element.style.borderColor = "#000000";
+			CreateChampionList("False");
+			return;
+		}
+		else
+		{
+			for(i = 0; i < listIds.length; i++)
+			{
+				document.getElementById(listIds[i]).value = "notselected";
+				document.getElementById(listIds[i]).style.borderColor = "#000000";
+			}
+			element.value = "selected";
+			element.style.borderColor = "#F39814";
+		}
+		
+		var possibleChampions = new Array();
+			
+        for (i = 0; i < championNames.length; i++)
+            if (typeChampions.includes(championNames[i].split("##")[0]))
+			{
+				if(comboBox.value == "AllChamps")
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				else if(comboBox.value == "ScriptsAvailable" && championNames[i].split("##").length > 1)
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				else if(comboBox.value == "ScriptsNotAvailable" && championNames[i].split("##").length == 1)
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+			}
+			
+		AddChampionsToList(possibleChampions);
+	}
+	function AddChampionsToList(possibleChampions)
+	{
+        var championList = document.getElementById("championList");
+        var scriptList = document.getElementById("scriptList");
+
+        while (scriptList.hasChildNodes())
+            scriptList.removeChild(scriptList.lastChild);
+			
+        while (championList.hasChildNodes())
+            championList.removeChild(championList.lastChild);
+		
+		var hasChampion = "false";
+		var thingToLoad;
+        for(i = 0; i < possibleChampions.length; i++)
+        {
+            var newChampionListItem = document.createElement("li");	
+            var newChampionListItemNode = document.createTextNode(possibleChampions[i].split('##')[0]);
+            newChampionListItem.onclick = function () { LoadChampionScripts(this); };
+
+			var urlLink = "url('http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/";
+			var champName = "";
+            newChampionListItem.appendChild(newChampionListItemNode);
+			
+			if(newChampionListItem.innerHTML == "Cho'Gath")
+				champName = "Chogath";
+			else if(newChampionListItem.innerHTML == "Kha'Zix")
+				champName = "Khazix";
+			else if(newChampionListItem.innerHTML == "Vel'Koz")
+				champName = "Velkoz";
+			else if(newChampionListItem.innerHTML == "Fiddlesticks")
+				champName = "FiddleSticks";
+			else if(newChampionListItem.innerHTML == "Wukong")
+				champName = "MonkeyKing";
+			else if(newChampionListItem.innerHTML == "LeBlanc")
+				champName = "Leblanc";
+			else
+				champName = possibleChampions[i].split('##')[0].replace(" ", "").replace("'", "").replace(".", "");
+			
+			newChampionListItem.style.backgroundImage = urlLink + champName + ".png')";
+			
+			newChampionListItem.style.backgroundSize = "30px 30px";
+			newChampionListItem.style.backgroundPosition = "right";
+			newChampionListItem.style.backgroundRepeat = "no-repeat";
+			newChampionListItem.id = possibleChampions[i].split("##")[0];
+			
+            championList.appendChild(newChampionListItem);
+			
+			if(possibleChampions[i].includes(championList.value))
+			{	
+				thingToLoad = newChampionListItem;
+				hasChampion = "true";
+			}
+			
+			if(possibleChampions.length == 1)
+				LoadChampionScripts(newChampionListItem);
+        }
+		if(hasChampion == "false")
+			championList.value = null;
+		else
+			LoadChampionScripts(thingToLoad);
+	}
+</script>
+</html>
