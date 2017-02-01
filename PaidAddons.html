@@ -36,7 +36,7 @@
         </div>
 		<div class="separator">
 			<p class="text">
-				These addons are pay-to-use. <b>These are NOT Buddy addons</b>. If you would like an addon that doesn't exist, get in contact with a developer and see if they would be willing to make one for you. 
+				These addons are pay-to-use. These are NOT buddy addons. If you would like an addon that doesn't exist, get in contact with a developer and see if they would be willing to make one for you. 
 			</p>
 		</div>
         <article class="markdown-body">
@@ -71,10 +71,10 @@
  
 <script>
 	var championNames = [
-	"Caitlyn##Unsigned Caitlyn|https://discord.gg/R2YHZv3|CXEZ65PWPSEDA|https://github.com/Sicryption/PaidAddons",
-	"Ezreal##Unsigned Ezreal|https://discord.gg/R2YHZv3|WMYNQJU4HYQQG|https://github.com/Sicryption/PaidAddons",
-	"Fiora##Unsigned Fiora|https://discord.gg/R2YHZv3|497ALP69HZ8BW|https://github.com/Sicryption/PaidAddons",
-	"Ryze##Unsigned Ryze|https://discord.gg/R2YHZv3|XPY3DEUC2KRXQ|https://github.com/Sicryption/PaidAddons"];
+	"Caitlyn##Unsigned Caitlyn|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Ezreal##Unsigned Ezreal|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Fiora##Unsigned Fiora|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Ryze##Unsigned Ryze|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons"];
 	
 	//populating main list
     function CreateChampionList(initial)
@@ -144,22 +144,21 @@
 			
 			var installButton = document.createElement("button");
 			installButton.innerHTML = "Install";
-			installButton.onclick = function () { launchInstall(this, champIndex); };
+			installButton.onclick = function () { launchInstall(this, champIndex); }
 			var discordButton = document.createElement("button");
 			discordButton.innerHTML = "Discord";
 			discordButton.onclick = function () { launchDiscord(this, champIndex); };
-			var purchaseButton = document.createElement("button");
-			purchaseButton.innerHTML = "Purchase";
-			purchaseButton.onclick = function () { launchPayment(this, champIndex); };
+			var forumButton = document.createElement("button");
+			forumButton.innerHTML = "Profile";
+			forumButton.onclick = function () { launchForum(this, champIndex); };;
 						
+			newListItem.appendChild(forumButton);
 			newListItem.appendChild(discordButton);
-			newListItem.appendChild(purchaseButton);
 			newListItem.appendChild(installButton);
 			
             scriptList.appendChild(newListItem);
 		}
     }
-
 	//when clicking the script
     function LoadURL(element, champIndex, linkIndex)
     {
@@ -180,9 +179,6 @@
 					var splitString = githubLink.split("/");
 					scriptURL = "elobuddy://" + splitString[splitString.length - 3] + "/" + splitString[splitString.length - 2];
 				}
-				
-				if(linkIndex == 1)
-					scriptURL = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=" + scriptURL;
 				window.open(scriptURL);
 			}
 		}
@@ -195,7 +191,7 @@
 	{
 		LoadURL(element, champIndex, 0);
 	}
-	function launchPayment(element, champIndex)
+	function launchForum(element, champIndex)
 	{
 		LoadURL(element, champIndex, 1);
 	}
@@ -210,6 +206,22 @@
         var searchTextBox = document.getElementById("championSearchTextbox");
 		
 		searchTextBox.value = "";
+		
+		var listIds = ["SupportType", "TankType", "FighterType", "MageType", "AssasinType", "MarksmanType"];
+		
+		var typeChampions;
+		if(element.id == "SupportType")
+			typeChampions = ["Alistar", "Anivia", "Annie", "Bard", "Blitzcrank", "Braum", "Brand", "Ivern", "Janna", "Karma", "Leona", "Lulu", "Lux", "Miss Fortune", "Morgana", "Nami", "Nautilus", "Nunu", "Poppy", "Shen", "Sion", "Sona", "Soraka", "Tahm Kench", "Taric", "Thresh", "Trundle", "Vel'Koz", "Volibear",	 "Zilean", "Zyra"];
+		else if(element.id == "TankType")
+			typeChampions = ["Alistar", "Amumu", "Blitzcrank", "Braum", "Cho'Gath", "Darius", "Dr. Mundo", "Galio", "Garen", "Gnar", "Hecarim", "Illaoi", "Jarvan IV", "Kled", "Leona", "Malphite", "Maokai", "Nasus", "Nautilus", "Nunu", "Olaf", "Poppy", "Rammus", "Renekton", "Sejuani", "Shen", "Shyvana", "Singed", "Sion", "Skarner", "Tahm Kench", "Trundle", "Udyr", "Vladimir", "Volibear", "Warwick", "Wukong", "Yorick", "Zac"];	
+		else if(element.id == "FighterType")
+			typeChampions = ["Aatrox", "Blitzcrank", "Camille", "Darius", "Diana", "Ekko", "Fiora", "Fizz", "Gangplank", "Garen", "Gnar", "Hecarim", "Illaoi", "Irelia", "Jarvan IV", "Jax", "Jayce", "Kayle", "Kha'Zix", "Kled", "Lee Sin", "Malphite", "Master Yi", "Mordekaiser", "Nasus", "Nautilus", "Nidalee", "Nocturne", "Nunu", "Olaf", "Pantheon", "Poppy", "Quinn", "Rammus", "Rek'Sai", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", "Sejuani", "Shyvana", "Singed", "Sion", "Skarner", "Swain", "Talon", "Taric", "Trundle", "Tryndamere", "Udyr", "Urgot", "Vi", "Volibear", "Warwick", "Wukong", "Xin Zhao", "Yasuo", "Yorick", "Zac", "Zed"];	
+		else if(element.id == "MageType")
+			typeChampions = ["Ahri", "Amumu", "Anivia", "Annie", "Aurelion Sol", "Azir", "Bard", "Brand", "Cassiopeia", "Cho'Gath", "Diana", "Elise", "Evelynn", "Ezreal", "Fiddlesticks", "Galio", "Gragas", "Heimerdinger", "Ivern", "Janna", "Karma", "Karthus", "Kassadin", "Katarina", "Kennen", "Kog'Maw", "LeBlanc", "Lissandra", "Lulu", "Lux", "Malzahar", "Maokai", "Morgana", "Nami", "Nunu", "Orianna", "Rumble", "Ryze", "Sona", "Soraka", "Swain", "Syndra", "Taliyah", "Twisted Fate", "Varus", "Veigar", "Vel'Koz", "Viktor", "Vladimir", "Xerath", "Ziggs", "Zilean", "Zyra"];
+		else if(element.id == "AssasinType")
+			typeChampions = ["Ahri", "Akali", "Diana", "Ekko", "Evelynn", "Fizz", "Kassadin", "Katarina", "Kha'Zix", "LeBlanc", "Master Yi", "Nidalee", "Nocturne", "Rengar", "Shaco", "Talon", "Zed"];
+		else if(element.id == "MarksmanType")
+			typeChampions = ["Ashe", "Caitlyn", "Corki", "Draven", "Ezreal", "Graves", "Jayce", "Jhin", "Jinx", "Kalista", "Kennen", "Kindred", "Kog'Maw", "Lucian", "Miss Fortune", "Quinn", "Sivir", "Teemo", "Tristana", "Twitch", "Urgot", "Varus", "Vayne"];
 		
 		if(element.value == "selected")
 		{
@@ -237,7 +249,15 @@
 		var possibleChampions = new Array();
 			
         for (i = 0; i < championNames.length; i++)
-			possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+            if (typeChampions.includes(championNames[i].split("##")[0]))
+			{
+				if(comboBox.value == "AllChamps")
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				else if(comboBox.value == "ScriptsAvailable" && championNames[i].split("##").length > 1)
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+				else if(comboBox.value == "ScriptsNotAvailable" && championNames[i].split("##").length == 1)
+					possibleChampions.splice(possibleChampions.length, 0, championNames[i]);
+			}
 			
 		AddChampionsToList(possibleChampions);
 	}
