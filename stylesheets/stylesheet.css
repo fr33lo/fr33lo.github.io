@@ -497,12 +497,18 @@ p.tagline {
   width: 20%;
   border-right: 5px solid #444;
 }
-.separator {
+.separatorbot {
   margin: 0 -20px 20px;
   border-bottom: 5px solid #444;
 }
-.separator .text {
-  margin: 0 20px 0px;
+.separatorbot .text {
+  margin: -10px 20px 0px 20px;
+}
+.separatorup {
+  margin: 0 -20px 20px;
+}
+.separatorup .text {
+  margin: 0 20px -20px;
 }
 
 .addonlist .secondary {

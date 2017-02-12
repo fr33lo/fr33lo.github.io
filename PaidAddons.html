@@ -34,9 +34,9 @@
 			  <a href="PaidAddons" class="addon-button-selected"><span>Paid Addons</span></a>
 			</div>
         </div>
-		<div class="separator">
+		<div class="separatorbot">
 			<p class="text">
-				These addons are pay-to-use. These are NOT buddy addons. If you would like an addon that doesn't exist, get in contact with a developer and see if they would be willing to make one for you. 
+				These addons are pay-to-use. These are NOT buddy addons.
 			</p>
 		</div>
         <article class="markdown-body">
@@ -47,6 +47,12 @@
 				<ol id="championList" class="primary"></ol>
 				<ol id="scriptList" class="secondary"></ol>
 			</div>
+		</article>
+		<div class="separatorup">
+			<p class="text">
+				If you have any further questions please join the Paid Addon <a href="https://discord.gg/R2YHZv3">Discord Server</a>.
+			</p>
+		</div>
       </div>
     </div>
     <footer>
@@ -71,10 +77,11 @@
  
 <script>
 	var championNames = [
-	"Caitlyn##Unsigned Caitlyn|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
-	"Ezreal##Unsigned Ezreal|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
-	"Fiora##Unsigned Fiora|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
-	"Ryze##Unsigned Ryze|https://discord.gg/R2YHZv3|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons"];
+	"Caitlyn##Unsigned Caitlyn|https://www.elobuddy.net/topic/49316-paid-unsigned-caitlyn/|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Ezreal##Unsigned Ezreal|https://www.elobuddy.net/topic/49305-paid-unsigned-ezreal/|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Fiora##Unsigned Fiora|https://www.elobuddy.net/topic/49317-paid-unsigned-fiora/|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons",
+	"Riven##Beasty Riven Reborn|https://www.elobuddy.net/topic/49271-paid-beasty-riven-reborn-open-beta/|https://www.elobuddy.net/profile/6088-mrarticuno/|https://github.com/mrarticuno/Elobuddy2.0",
+	"Ryze##Unsigned Ryze|https://www.elobuddy.net/topic/49318-paid-unsigned-ryze/|https://www.elobuddy.net/profile/1798-chaos/|https://github.com/Sicryption/PaidAddons"];
 	
 	//populating main list
     function CreateChampionList(initial)
@@ -145,15 +152,15 @@
 			var installButton = document.createElement("button");
 			installButton.innerHTML = "Install";
 			installButton.onclick = function () { launchInstall(this, champIndex); }
-			var discordButton = document.createElement("button");
-			discordButton.innerHTML = "Discord";
-			discordButton.onclick = function () { launchDiscord(this, champIndex); };
 			var forumButton = document.createElement("button");
-			forumButton.innerHTML = "Profile";
-			forumButton.onclick = function () { launchForum(this, champIndex); };;
+			forumButton.innerHTML = "Forum";
+			forumButton.onclick = function () { launchForum(this, champIndex); };
+			var profileButton = document.createElement("button");
+			profileButton.innerHTML = "Profile";
+			profileButton.onclick = function () { launchProfile(this, champIndex); };;
 						
+			newListItem.appendChild(profileButton);
 			newListItem.appendChild(forumButton);
-			newListItem.appendChild(discordButton);
 			newListItem.appendChild(installButton);
 			
             scriptList.appendChild(newListItem);
@@ -187,11 +194,11 @@
 	{
 		LoadURL(element, champIndex, 2);
 	}
-	function launchDiscord(element, champIndex)
+	function launchForum(element, champIndex)
 	{
 		LoadURL(element, champIndex, 0);
 	}
-	function launchForum(element, champIndex)
+	function launchProfile(element, champIndex)
 	{
 		LoadURL(element, champIndex, 1);
 	}
