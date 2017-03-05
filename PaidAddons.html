@@ -95,7 +95,7 @@
 		var comboBox = document.getElementById("ChampionListType");
 		
 		var url = window.location.href;
-		if(url.includes("?"))
+		if(initial == 'True' && url.includes("?"))
 			element.value = url.split("?")[1].replace("%20", " ");
 		
         var possibleChampions = new Array();
